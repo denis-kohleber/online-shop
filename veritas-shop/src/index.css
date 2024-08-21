@@ -1,0 +1,370 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --primaryColor: #ffffff;
+  --primaryColor2: #f3f6f2;
+  --primaryColor3: #c5c5c5;
+  --secondaryColor: #181818;
+  --secondaryColor2: #242424;
+  --accentColor: #6b0505;
+}
+
+/* CSS-Reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, #root {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+/* CSS-Reset End */
+
+/* || SKELETT */
+
+body, #root {
+  scroll-behavior: smooth; 
+  width: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: var(--secondaryColor);
+  /* Prevent highlighting on Touchscreens */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: clip; 
+}
+
+/* Prevent the auto color change of Inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+
+/* || SKELETT - Scrollbar */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--accentColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondaryColor2);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primaryColor3);
+}
+
+body {
+  display: grid;
+  grid-template-columns: auto;
+  justify-items: center;
+  position: relative;
+  background-color: var(--primaryColor);
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+*:focus {
+  outline: auto;
+}
+
+/* || HEADER */
+
+.header {
+  width: 100%;
+  height: clamp(100px, 30vw, 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primaryColor);
+  position: relative;
+}
+
+.logo {
+  height: clamp(70px, 20vw, 90px);
+}
+
+/* || NAVIGATION-BAR */
+
+.nav {
+  background-color: var(--accentColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1px;
+  top: -1px;
+  position: sticky;
+  height: 55px;
+  z-index: 10;
+}
+
+.navLogoContainer {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+
+.navLogo {
+  height: 42px;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  animation: hideInitialAnimation 0.1s linear;
+}
+
+@-webkit-keyframes hideInitialAnimation {
+  0% {
+      opacity:0;
+  }
+  100% {
+      opacity:0;
+  }
+}
+
+.navLogo.active {
+  opacity: 1;
+}
+
+.navLinkContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--primaryColor);
+  font-weight: bold;
+}
+
+.navLinkSearch {
+  background-color: var(--primaryColor);
+  border: none;
+  font-size: 1rem;
+  display: none;
+  align-items: start;
+  gap: 10px;
+}
+
+.searchIconMenu {
+  height: 16px;
+  transform: scale(1.4);
+}
+
+.navBtnContainer {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.navBtn {
+  background-color: var(--accentColor);
+  border: none;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.navIcon {
+  width: 33px;
+}
+
+.navBtnBurger {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+@media screen and (max-width: 800px) {
+  .navLogoContainer {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+  }
+
+  .navLinkContainer {
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    align-items: start;
+    height: calc(100vh - 55px - 15px);
+    top: 100%;
+    left: 0;
+    padding-top: 15px;
+    gap: 0;
+    background-color: var(--primaryColor);
+    transform: translateX(-250px);
+    transition: transform 0.4s;
+    z-index: 2;
+  }
+
+  .navBtnBurger {
+    display: inline-block;
+  }
+
+  .navLinkContainer.active {
+    transform: translateX(0);
+  }
+
+  .navLink {
+    color: var(--accentColor);
+    padding: 15px 15px 15px 25px;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .navLinkSearch {
+    display: flex;
+  }
+  .navBtnSearch {
+    display: none;
+  }
+}
+
+.shoppingCartWindow, .searchWindow {
+  background-color: #af3c3c;
+  width: 240px;
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  align-items: start;
+  /* 100vh - NavBar height 55px - padding 15px */
+  height: calc(100vh - 55px - 15px);
+  top: 100%;
+  right: 0;
+  padding-top: 15px;
+  gap: 0;
+  transform: translateX(250px);
+  transition: transform 0.4s;
+  overflow: auto;
+  z-index: 2;
+}
+
+.searchWindow {
+  background-color: rgb(112, 112, 172);
+}
+
+.shoppingCartWindow.active, .searchWindow.active {
+  transform: translateX(0);
+}
+
+.dark-bg {
+  opacity: 0;
+  z-index: -1;
+}
+
+.dark-bg.active {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 55px);
+  background-color: #00000030;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.4s;  
+}
+
+
+/* || NAVIGATION-BAR* - Hamburger Button */
+
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transform: scale(1.6);
+}
+.hamRotate.active {
+  transform: rotate(45deg) scale(1.6);
+}
+.hamRotate180.active {
+  transform: rotate(180deg);
+}
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: #ffffff;
+  stroke-width: 5.5;
+  stroke-linecap: round;
+}
+.ham .top {
+  stroke-dasharray: 40 82;
+}
+.ham .middle {
+  stroke-dasharray: 40 111;
+}
+.ham .bottom {
+  stroke-dasharray: 40 161;
+}
+.ham.active .top {
+  stroke-dasharray: 17 82;
+  stroke-dashoffset: -62px;
+}
+.ham.active .middle {
+  stroke-dashoffset: 23px;
+}
+.ham.active .bottom {
+  stroke-dashoffset: -83px;
+}
+
+
+
+
+.placeholder {
+  height: 500vh;
+}
