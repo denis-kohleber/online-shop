@@ -39,11 +39,11 @@ function Navbar({ inView }: Props) {
   };
 
   // Necessary because the menus must be in full height
-  const nav = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   const jumpToNav = () => {
-    if (nav.current) {
-        nav.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (navRef.current) {
+        navRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
   }
 
@@ -63,7 +63,7 @@ function Navbar({ inView }: Props) {
 
   return (
     <>
-    <nav className="nav" ref={nav}>
+    <nav className="nav" ref={navRef}>
         <Link className="navLogoContainer" to="/" aria-hidden="true" tabIndex={-1} onClick={removeMenus}>
                 <img className={`navLogo ${!inView && 'active'}`} src="src/assets/veritas-logo-white.svg" alt="veritas" />
         </Link>

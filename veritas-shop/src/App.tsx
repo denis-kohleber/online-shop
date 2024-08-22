@@ -1,6 +1,7 @@
 import { useInView } from "react-intersection-observer";
 import { Header } from "./components/Header"
 import { Navbar } from "./components/Navbar"
+import { Footer } from "./components/Footer";
 
 function App() {
   const { ref, inView } = useInView({ 
@@ -12,8 +13,8 @@ function App() {
     <>
       <Header ref={ref} />
       <Navbar inView={inView} />
-      <img src="src/assets/veritas-logo.svg" alt="" />
       <div className="placeholder"></div>
+      <Footer />
     </>
   )
 }
