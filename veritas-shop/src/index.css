@@ -11,6 +11,21 @@
   --accentColor: #6b0505;
 }
 
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
 /* CSS-Reset */
 
 html, body, div, span, applet, object, iframe,
@@ -374,7 +389,6 @@ body {
 /* || FOOTER */
 
 footer {
-  background-color: var(--secondaryColor2);
   color: var(--primaryColor);
   display: flex;
   flex-flow: column;
@@ -382,6 +396,141 @@ footer {
 }
 
 /* || FOOTER - Newsletter */
+
+.newsletterSection {
+  padding: 60px 7vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 14vw);
+  background-color: var(--secondaryColor);
+  border-radius: 30px 30px 0 0;
+  position: relative;
+}
+
+.newsletterContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-flow: column;
+}
+
+.newsletterHeadline {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.7px;
+}
+
+.newsletterForm {
+  display: flex;
+  flex: 1;
+  flex-flow: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  max-width: 900px;
+}
+
+.newsletterLabel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 350px;
+  text-align: center;
+}
+
+.newsletterInputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: wrap;
+  border: 5px solid var(--accentColor);
+  min-height: 50px;
+  max-width: fit-content;
+  min-width: 350px;
+  border-radius: 50px;
+  background-color: var(--accentColor);
+  overflow: hidden;
+}
+
+.newsletterInput {
+  flex: 1;
+  min-width: 200px;
+  max-width: 350px;
+  font-size: 1.2rem;
+  min-height: 50px;
+  padding: 0;
+  padding-left: 15px;
+  margin: 0;
+  border: none;
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  
+}
+
+.newsletterInput::placeholder {
+  color: var(--primaryColor);
+ 
+}
+
+.newsletterSubmitBtn {
+  min-height: 50px;
+  font-size: 1.2rem;
+  padding: 0 20px;
+  border: none;
+  color: var(--primaryColor);
+  background-color: var(--accentColor);
+  font-weight: bold;
+}
+
+.newsletterSubmitBtn:hover {
+  background-color: #242424;
+}
+
+@media screen and (max-width: 450px) {
+  .newsletterSubmitBtn {
+    flex: 1;
+  }
+  .newsletterInputContainer {
+    min-width: 250px;
+  }
+  .newsletterLabel {
+    min-width: 200px;
+  }
+  .newsletterInput {
+    text-align: center;
+    padding: 0;
+  }
+}
+
+/* || FOOTER - Newsletter - Success Message */
+
+.newsletterSuccessContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-flow: column;
+  position: absolute;
+  padding: 0 7vw;
+}
+
+.successMsg {
+  font-size: 1.2rem;
+  max-width: 900px;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.7px;
+}
+
+.checkSuccess {
+  width: 40px;
+}
 
 /* || FOOTER - Main Part */
 
@@ -391,9 +540,9 @@ footer {
   justify-content: center;
   align-items: center;
   max-width: 1200px;
-  width: calc(100% - 7vw);
+  width: calc(100% - 14vw);
   gap: 30px;
-  padding: 30px 7vw;
+  padding: 40px 7vw;
 }
 
 .partingLineFooter {
@@ -473,14 +622,16 @@ footer {
 
 /* || FOOTER - Information - Accordion */
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 720px) {
   .infoList {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
+    text-align: center;
   }
   .infoHeadline {
     cursor: pointer;
+    text-align: center;
   }
 }
 
@@ -526,10 +677,9 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: calc(100% - 7vw);
+  width: calc(100% - 14vw);
   background-color: var(--secondaryColor);
   font-family: 'RedRose', 'Roboto', sans-serif;
-
 }
 
 .devHeadline {

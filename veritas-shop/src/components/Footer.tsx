@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from "react";
 function Footer() {
     // Necessary for activate the dropdown Functions by < 700 screen-width
     const [isSmallScreen, setIsSmallScreen] = 
-    useState<boolean>(window.innerWidth <= 700);
+    useState<boolean>(window.innerWidth <= 720);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth <= 700);
+            setIsSmallScreen(window.innerWidth <= 720);
         };
 
         // Initial activation
@@ -29,32 +29,31 @@ function Footer() {
     const activateDropdown = (infoListNumber: number) => {
         if (!isSmallScreen) return;
 
-        // Reset
+        resetDropdown();
+
+        if ((infoListNumber === 1) && infoList01Ref.current) {
+            infoList01Ref.current.style.maxHeight = 
+            infoList01Ref.current?.scrollHeight + 'px';
+        }
+        if ((infoListNumber === 2) && infoList02Ref.current) {
+            infoList02Ref.current.style.maxHeight = 
+            infoList02Ref.current?.scrollHeight + 'px';
+        }
+        if ((infoListNumber === 3) && infoList03Ref.current) {
+            infoList03Ref.current.style.maxHeight = 
+            infoList03Ref.current?.scrollHeight + 'px';
+        }
+    }
+
+    const resetDropdown = () => {
         if (infoList01Ref.current) 
             infoList01Ref.current.style.maxHeight = '0';
         if (infoList02Ref.current) 
             infoList02Ref.current.style.maxHeight = '0';
         if (infoList03Ref.current) 
             infoList03Ref.current.style.maxHeight = '0';
-
-
-        if (infoListNumber === 1) {
-            if (infoList01Ref.current) 
-                infoList01Ref.current.style.maxHeight = 
-            infoList01Ref.current?.scrollHeight + 'px';
-        }
-        if (infoListNumber === 2) {
-            if (infoList02Ref.current) 
-                infoList02Ref.current.style.maxHeight = 
-            infoList02Ref.current?.scrollHeight + 'px';
-        }
-        if (infoListNumber === 3) {
-            if (infoList03Ref.current) 
-                infoList03Ref.current.style.maxHeight = 
-            infoList03Ref.current?.scrollHeight + 'px';
-        }
     }
-    
+
     return (
       <footer>
         <Newsletter />
