@@ -8,7 +8,9 @@
   --primaryColor3: #c5c5c5;
   --secondaryColor: #181818;
   --secondaryColor2: #242424;
-  --accentColor: #E6C067;
+  --accentColor: #ffd575;
+  --filterYellow: brightness(0) saturate(100%) invert(80%) sepia(86%) saturate(1582%) hue-rotate(310deg) brightness(115%) contrast(101%);
+  --standartShadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.6);
 }
 
 .fade-enter {
@@ -126,15 +128,15 @@ button::before {
 /* || SKELETT - Scrollbar */
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--accentColor);
+  background: var(--secondaryColor);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--secondaryColor);
+  background: var(--accentColor);
   border-radius: 2px;
 }
 
@@ -162,12 +164,23 @@ body {
 
 .header {
   width: 100%;
-  height: clamp(100px, 30vw, 120px);
+  height: clamp(85px, 26vw, 120px);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--primaryColor);
+  background-color: var(--accentColor);
   position: relative;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.headerBg {
+  background-color: #181818;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 10px;
+  width: 100%;
+  height: 100%;
 }
 
 .logo {
@@ -177,14 +190,25 @@ body {
 /* || NAVIGATION-BAR */
 
 .nav {
-  background-color: var(--accentColor);
+  background-color: var(--secondaryColor);
+  position: sticky;
+  height: 55px;
+  top: 0px;
+  border-radius: 0 0 20px 20px;
+  z-index: 10;
+  box-shadow: var(--standartShadow);
+}
+
+.navWrapper {
+  background-color: var(--secondaryColor);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1px;
   top: -1px;
-  position: sticky;
-  height: 55px;
+  padding-top: 1px;
+  height: 100%;
+  border-radius: 0 0 20px 20px;
+  position: relative;
   z-index: 10;
 }
 
@@ -193,6 +217,7 @@ body {
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
+  z-index: 12;
 }
 
 .navLogo {
@@ -215,26 +240,10 @@ body {
   opacity: 1;
 }
 
-.navLinkContainer {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.navLink {
-  text-decoration: none;
-  color: var(--primaryColor);
-  font-weight: bold;
-}
-
-.navLinkSearch {
-  background-color: var(--primaryColor);
-  border: none;
-  font-size: 1rem;
-  display: none;
-  align-items: start;
-  gap: 10px;
+.navLogoContainer:focus > .navLogo, 
+.navLogoContainer:hover > .navLogo {
+  opacity: 1;
+filter: var(--filterYellow);
 }
 
 .searchIconMenu {
@@ -247,13 +256,19 @@ body {
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
+    z-index: 12;
 }
 
 .navBtn {
-  background-color: var(--accentColor);
+  background-color: var(--secondaryColor);
   border: none;
   padding: 0;
   margin-left: 10px;
+  cursor: pointer;
+}
+
+.navBtn:hover > *, .navBtn:focus > * {
+  filter: var(--filterYellow);
 }
 
 .navIcon {
@@ -270,49 +285,13 @@ body {
 
 @media screen and (max-width: 800px) {
   .navLogoContainer {
-    position: relative;
-    transform: none;
-    top: auto;
-    left: auto;
-  }
-
-  .navLinkContainer {
-    display: flex;
-    flex-flow: column;
-    position: absolute;
-    align-items: start;
-    height: calc(100vh - 55px - 15px);
-    top: 100%;
-    left: 0;
-    padding-top: 15px;
-    gap: 0;
-    background-color: var(--primaryColor);
-    transform: translateX(-250px);
-    transition: transform 0.4s;
-    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .navBtnBurger {
     display: inline-block;
-  }
-
-  .navLinkContainer.active {
-    transform: translateX(0);
-  }
-
-  .navLink {
-    color: var(--accentColor);
-    padding: 15px 15px 15px 25px;
-    width: 200px;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  .navLinkSearch {
-    display: flex;
-  }
-  .navBtnSearch {
-    display: none;
   }
 }
 
@@ -323,11 +302,11 @@ body {
   flex-flow: column;
   position: absolute;
   align-items: start;
-  /* 100vh - NavBar height 55px - padding 15px */
-  height: calc(100vh - 55px - 15px);
-  top: 100%;
+  /* 100vh - padding 15px */
+  height: calc(100vh - 15px);
+  top: 0;
   right: 0;
-  padding-top: 15px;
+  padding-top: 70px;
   gap: 0;
   transform: translateX(250px);
   transition: transform 0.4s;
@@ -350,16 +329,128 @@ body {
 
 .dark-bg.active {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   width: 100vw;
-  height: calc(100vh - 55px);
+  height: 100vh;
   background-color: #00000030;
   z-index: 1;
   opacity: 1;
   transition: opacity 0.4s;  
 }
 
+/* || NAVIGATION-BAR - NavLinks / NavMenu */
+
+.navLinkContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 12;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--primaryColor);
+  font-weight: bold;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  min-width: 80px;
+}
+
+.navLink:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 6px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accentColor); 
+  transform-origin: bottom center;
+  transition: transform 0.25s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accentColor);
+}
+
+.navLink:hover:after, .navLink:focus:after  {
+    transform: scaleX(1);
+}
+
+.navLink:hover, .navLink:focus {
+    color: var(--accentColor);
+}
+
+.navLinkSearch {
+  background-color: var(--accentColor);
+  border: none;
+  font-size: 1rem;
+  display: none;
+  align-items: start;
+  gap: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .navLink:after {
+    background-color: var(--secondaryColor); 
+    color: var(--secondaryColor);
+  }
+
+  .navLink:focus, .navLink:hover {
+    color: var(--secondaryColor);
+  }
+
+  .navLink:hover {
+      color: var(--secondaryColor);
+  }
+
+  .navLinkContainer {
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    align-items: start;
+    height: calc(100vh - 15px);
+    top: 0;
+    left: 0;
+    padding-top: 70px;
+    gap: 0;
+    background-color: var(--accentColor);
+    transform: translateX(-250px);
+    transition: transform 0.4s;
+    z-index: 2;
+  }
+
+  .navLink {
+    color: var(--secondaryColor);
+    padding: 15px 15px 15px 25px;
+    width: 200px;
+    height: auto;
+    justify-content: start;
+
+  }
+
+  .navLinkContainer.active {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .navLinkSearch {
+    display: flex;
+  }
+  .navBtnSearch {
+    display: none;
+  }
+}
 
 /* || NAVIGATION-BAR - Hamburger Button */
 
@@ -443,6 +534,7 @@ footer {
   background-color: var(--secondaryColor);
   border-radius: 30px 30px 0 0;
   position: relative;
+  box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.6);
 }
 
 .newsletterContainer {
@@ -485,7 +577,7 @@ footer {
   justify-content: center;
   align-items: center;
   flex-flow: wrap;
-  border: 5px solid var(--accentColor);
+  border: 2px solid var(--accentColor);
   min-height: 50px;
   max-width: fit-content;
   min-width: 350px;
