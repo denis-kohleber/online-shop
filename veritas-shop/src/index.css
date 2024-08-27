@@ -8,7 +8,7 @@
   --primaryColor3: #c5c5c5;
   --secondaryColor: #181818;
   --secondaryColor2: #242424;
-  --accentColor: #6b0505;
+  --accentColor: #E6C067;
 }
 
 .fade-enter {
@@ -94,6 +94,35 @@ input:-webkit-autofill:focus {
   transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
+/* || SKELETT - Button-Animation-Preset */
+
+button {
+  position: relative;
+}
+
+button::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity .2s linear;
+}
+
+@media (hover: hover) {
+  button:hover::before, button:focus::before {
+    opacity: 1; 
+  }
+}
+
+@media (pointer: coarse)  {
+  button:active::before, button:focus::before {
+    opacity: 1; 
+  }
+}
+
 /* || SKELETT - Scrollbar */
 
 ::-webkit-scrollbar {
@@ -126,7 +155,7 @@ body {
 }
 
 *:focus {
-  outline: auto;
+  outline: none;
 }
 
 /* || HEADER */
@@ -395,10 +424,18 @@ footer {
   align-items: center;
 }
 
+.partingLine {
+  height: 5px;
+  width: 100%;
+  background-color: var(--secondaryColor);
+  border-radius: 10px;
+  margin-top: -15px;
+}
+
 /* || FOOTER - Newsletter */
 
 .newsletterSection {
-  padding: 60px 7vw;
+  padding: 30px 7vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -432,7 +469,6 @@ footer {
   justify-content: center;
   font-size: 1.3rem;
   font-weight: 500;
-  max-width: 900px;
 }
 
 .newsletterLabel {
@@ -470,12 +506,14 @@ footer {
   border: none;
   background-color: var(--secondaryColor);
   color: var(--primaryColor);
-  
+}
+
+.newsletterInput:focus {
+  background-color: var(--secondaryColor2);
 }
 
 .newsletterInput::placeholder {
   color: var(--primaryColor);
- 
 }
 
 .newsletterSubmitBtn {
@@ -483,13 +521,21 @@ footer {
   font-size: 1.2rem;
   padding: 0 20px;
   border: none;
-  color: var(--primaryColor);
+  color: var(--secondaryColor);
   background-color: var(--accentColor);
   font-weight: bold;
 }
 
-.newsletterSubmitBtn:hover {
-  background-color: #242424;
+.newsletterSubmitBtn::before {
+  background-color: var(--primaryColor);
+  content: 'Anmelden';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome {
+  font-weight: bold;
 }
 
 @media screen and (max-width: 450px) {
@@ -503,8 +549,8 @@ footer {
     min-width: 200px;
   }
   .newsletterInput {
-    text-align: center;
     padding: 0;
+    text-align: center;
   }
 }
 
@@ -525,7 +571,7 @@ footer {
   max-width: 900px;
   text-align: center;
   line-height: 1.3;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.5px;
 }
 
 .checkSuccess {
@@ -538,11 +584,31 @@ footer {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  align-items: center;
-  max-width: 1200px;
   width: calc(100% - 14vw);
+  padding: 30px 7vw;
+  background-color: var(--accentColor);
+  border-radius: 30px 30px 0px 0;
+  position: relative;
+}
+
+.footerMainBG {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondaryColor);
+  left: 0;
+  top: -10px;
+  z-index: -1;
+}
+
+.footerMainWrapper {
+  align-self: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
   gap: 30px;
-  padding: 40px 7vw;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .partingLineFooter {
@@ -581,6 +647,7 @@ footer {
   text-align: center;
   padding: 0 5px;
   line-height: 1.2;
+  color: var(--secondaryColor);
 }
 
 /* || FOOTER - Information */
@@ -601,38 +668,66 @@ footer {
 }
 
 .infoHeadline {
+  cursor: pointer;
+  text-align: center;
   font-size: 1.2rem;
   font-weight: bold;
+  color: var(--primaryColor);
+  background-color: var(--secondaryColor);
+  padding: 10px 0;
+  width: 240px;
+  border-radius: 40px;
+}
+
+.infoHeadline {
+  position: relative;
+}
+
+@media (hover: hover) {
+  .infoHeadline:hover, .infoHeadline:focus {
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor); 
+  }
+}
+
+@media (pointer: coarse)  {
+  .infoHeadline:active, .infoHeadline:focus {
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor); 
+  }
 }
 
 .infoList {
   line-height: 1.3;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  text-align: center;
+  background-color: var(--secondaryColor);
+  border-radius: 20px;
+  height: 160px;
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: center;
 }
 
 .infoList > * > *, .infoList > * {
   text-decoration: none;
-  color: var(--primaryColor3);
+  color: var(--primaryColor);
   font-size: 0.9rem;
 }
 
-.phoneNumber > * {
-  color: var(--primaryColor);
-  font-weight: 500;
+.infoList > :nth-child(1) {
+  padding-top: 20px;
 }
 
-/* || FOOTER - Information - Accordion */
+.infoList > :nth-last-child(1) {
+  padding-bottom: 20px;
+}
 
-@media screen and (max-width: 720px) {
-  .infoList {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-    text-align: center;
-  }
-  .infoHeadline {
-    cursor: pointer;
-    text-align: center;
-  }
+.phoneNumber > * {
+  font-weight: 500;
 }
 
 /* || FOOTER - Navbar */
@@ -656,16 +751,36 @@ footer {
 
 .footerLink > * , .footerLink {
   text-decoration: none;
-  color: var(--primaryColor3);
+  color: var(--secondaryColor);
   font-size: 0.9rem;
 }
 
-.footerLinks > * > *:hover, .infoList > * > *:hover {
-  color: var(--primaryColor);
+@media (hover: hover) {
+  .infoList > * > *:hover, .infoList > * > *:focus {
+    color: var(--accentColor);
+  }
+  
+  .footerLinks > * > *:hover, .footerLinks > * > *:focus {
+    color: var(--primaryColor);
+  }
+  
+  .phoneNumber > *:hover, .phoneNumber > *:focus {
+    color: var(--accentColor);
+  }
 }
 
-.phoneNumber > *:hover {
-  color: var(--primaryColor3);
+@media (pointer: coarse)  {
+  .infoList > * > *:active, .infoList > * > *:focus {
+    color: var(--accentColor);
+  }
+  
+  .footerLinks > * > *:active, .footerLinks > * > *:focus {
+    color: var(--primaryColor);
+  }
+  
+  .phoneNumber > *:active .phoneNumber > *:focus {
+    color: var(--accentColor);
+  }
 }
 
 /* || FOOTER - Developer Credit */
@@ -694,7 +809,7 @@ footer {
 }
 
 .gitHubIcon:hover {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  filter: brightness(0) saturate(100%) invert(100%) sepia(90%) saturate(3%) hue-rotate(275deg) brightness(109%) contrast(100%);
 }
 
 .copyright {

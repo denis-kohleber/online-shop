@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 
 function Newsletter() {  
     const [email, setEmail] = useState<string>('');
@@ -15,7 +15,7 @@ function Newsletter() {
         // Adjust a fixed height
         if (section.current) {
             section.current.style.height = 
-            section.current.clientHeight - 120 + 'px';
+            section.current.clientHeight - 60 + 'px';
         }
         
         // Set the SuccessMsg with the e-mail
@@ -38,10 +38,9 @@ function Newsletter() {
 
         timeoutRef02.current = setTimeout(() => {
             if (section.current) {
-                if (email) return
                 section.current.style.height = 'auto';
             }
-        }, 610);
+        }, 600);
     }
 
     const cleanUpTimeouts = () => {
@@ -66,10 +65,13 @@ function Newsletter() {
                     exit={{ opacity: 0}}
                     transition={{ duration: 0.3 }}
                     >   
-                        <h2 className="newsletterHeadline">Erfolgreich angemeldet!</h2>
                         <img className="checkSuccess" src="src/assets/check-outline.svg" alt="" />
-                        <p className="successMsg">{` Eine Bestätigungs-E-Mail wurde an "${email}" gesendet.
-                            Bestätigen Sie Ihre Anmeldung und wir informieren Sie über unsere neusten Trends und Angebote.`}</p>
+                        <p className="successMsg">
+                            <span className="welcome">Willkommen!</span>
+                            {` Eine Bestätigungs-E-Mail wurde an "${email}" gesendet.
+                            Bestätigen Sie Ihre Anmeldung und wir informieren Sie über unsere neusten Trends 
+                            und Angebote.`}
+                        </p>
                     </motion.div>
                 ) : (
                     <motion.div
@@ -82,9 +84,11 @@ function Newsletter() {
                     >
                         <h2 className="newsletterHeadline">10 € Gutschein sichern auf Ihre nächste Bestellung!</h2>
                         <form className="newsletterForm" action="" onSubmit={(e) => handleSubmit(e)}>
-                            <label className="newsletterLabel" htmlFor="newsletterInput">Melden Sie sich zum Newsletter an:</label>
+                            <label className="newsletterLabel" htmlFor="newsletterInput">
+                                Melden Sie sich zum Newsletter an:</label>
                             <div className="newsletterInputContainer">
-                                <input className="newsletterInput" maxLength={40} name="email" type="email" id="newsletterInput" ref={emailInput} required placeholder="Ihre E-Mail-Adresse"/>
+                                <input className="newsletterInput" maxLength={40} name="email" type="email" 
+                                id="newsletterInput" ref={emailInput} required placeholder="Ihre E-Mail-Adresse"/>
                                 <button type="submit" className="newsletterSubmitBtn">Anmelden</button>
                             </div>
                         </form>
