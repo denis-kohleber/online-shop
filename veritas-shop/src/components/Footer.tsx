@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom"
-import { Newsletter } from "./Newsletter"
+import { Link } from "react-router-dom";
+import { Newsletter } from "./Newsletter";
 import { useRef } from "react";
+import storeIcon from "../assets/store.svg";
+import truckIcon from "../assets/store.svg";
+import coinIcon from "../assets/hand-coin.svg";
+import packageIcon from "../assets/package.svg";
+import githubIcon from "../assets/github.svg";
 
 function Footer() {
     // Dropdown by < 700 screen-width
@@ -68,26 +73,26 @@ function Footer() {
                 <article className="serviceListArticle" aria-label='Service-List'>
                     <div className="serviceContainer01 serviceContainer">
                         <figure className="service">
-                            <img className="serviceIcon" width="65px" height="65px"
-                            src="src/assets/store.svg" alt="Manufactur Icon" />
+                            <img className="serviceIcon" loading="lazy" width="65px" height="65px"
+                            src={storeIcon} alt="Manufactur Icon" />
                             <figcaption className="serviceCaption">Lieferung direkt vom Hersteller</figcaption>
                         </figure>
                         <figure className="service">
-                            <img className="serviceIcon" width="65px" height="65px"
-                            src="src/assets/truck.svg" alt="Fast delivery Icon" />
+                            <img className="serviceIcon" loading="lazy" width="65px" height="65px"
+                            src={truckIcon} alt="Fast delivery Icon" />
                             <figcaption className="serviceCaption">Versand innerhalb 24 Stunden</figcaption>
                         </figure>
                     </div>
 
                     <div className="serviceContainer02 serviceContainer">
                         <figure className="service">
-                            <img className="serviceIcon" width="65px" height="65px"
-                            src="src/assets/hand-coin.svg" alt="Cashback Icon" />
+                            <img className="serviceIcon" loading="lazy" width="65px" height="65px"
+                            src={coinIcon} alt="Cashback Icon" />
                             <figcaption className="serviceCaption">2% Cashback bei Einkäufen im Shop</figcaption>
                         </figure>
                         <figure className="service">
-                            <img className="serviceIcon" width="65px" height="65px"
-                            src="src/assets/package.svg" alt="Retoure Icon" />
+                            <img className="serviceIcon" loading="lazy" width="65px" height="65px"
+                            src={packageIcon} alt="Retoure Icon" />
                             <figcaption className="serviceCaption">Kostenlose Retoure</figcaption>
                         </figure>
                     </div>
@@ -152,7 +157,7 @@ function Footer() {
         <section className="devCredit" aria-label='Developer Credit'>
             <h2 className="devHeadline">
                 <a className="devLink" href="https://github.com/denis-kohleber">
-                    <img className="gitHubIcon" src="src/assets/github.svg" 
+                    <img className="gitHubIcon" loading="lazy" src={githubIcon} 
                     height="22px" width="22px" alt="Github-Link Icon" />
                 </a>
                 Developed by Denis Kohleber

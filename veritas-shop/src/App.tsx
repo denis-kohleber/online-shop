@@ -13,6 +13,9 @@ function App() {
     <>
       <Header ref={ref} />
       <Navbar inView={inView} />
+      <main>
+        <HeroBanner />
+      </main>
       <div className="placeholder"></div>
       <Footer />
     </>

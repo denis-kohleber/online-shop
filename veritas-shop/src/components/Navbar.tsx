@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useWindowWidth } from '../hooks/useWindowWidth';
+import logoWhite from "../assets/veritas-logo-white.svg";
+import searchIcon01 from "../assets/magnify.svg";
+import searchIcon02 from "../assets/magnify02.svg";
+import cartIcon from "../assets/cart.svg";
 
 interface Props {
     inView: boolean;
@@ -123,7 +127,7 @@ function Navbar({ inView }: Props) {
     <nav className="nav" ref={navRef}>
       <div className="navWrapper">
         <Link className="navLogoContainer" to="/" aria-label='Home-Link' onClick={removeMenus}>
-          <img className={`navLogo ${!inView && 'active'}`} src="src/assets/veritas-logo-white.svg" alt="veritas" />
+          <img className={`navLogo ${!inView && 'active'}`} src={logoWhite} alt="veritas" />
         </Link>
 
         <button className="navBtn navBtnBurger" ref={burgerBtn} aria-label='Öffnen/Schließen Menü' onClick={showCloseMenu}>
@@ -139,7 +143,7 @@ function Navbar({ inView }: Props) {
       <div className={`navLinkContainer ${isMenuActive ? 'active' : ''}`}>
         <button ref={navLink01} className="navLink navLinkSearch" onClick={showSearch}>
           SUCHE
-          <img className="searchIconMenu" src="src/assets/magnify02.svg" alt="" />
+          <img className="searchIconMenu" src={searchIcon02} alt="" />
         </button>
         <NavLink ref={navLink02} to="/outdoor" className="navLink navLinkOutdoor" onClick={onClickMenuLink}>OUTDOOR</NavLink>
         <NavLink ref={navLink03} to="/workwear" className="navLink navLinkWorkwear" onClick={onClickMenuLink}>WORKWEAR</NavLink>
@@ -150,10 +154,10 @@ function Navbar({ inView }: Props) {
         
       <div className='navBtnContainer'>
         <button className="navBtn navBtnCart" onClick={showCart}>
-          <img className="navIcon" src="src/assets/cart.svg" alt="cart-button" />
+          <img className="navIcon" src={cartIcon} alt="cart-button" />
           </button>
         <button className="navBtn navBtnSearch" onClick={showSearch}>
-          <img className="navIcon" src="src/assets/magnify.svg" alt="search-button" />
+          <img className="navIcon" src={searchIcon01} alt="search-button" />
         </button>
       </div>
           

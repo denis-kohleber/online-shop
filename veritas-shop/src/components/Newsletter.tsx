@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react"
+import successIcon from "../assets/check-outline.svg";
 
 function Newsletter() {  
     const [email, setEmail] = useState<string>('');
@@ -65,7 +66,7 @@ function Newsletter() {
                     exit={{ opacity: 0}}
                     transition={{ duration: 0.3 }}
                     >   
-                        <img className="checkSuccess" src="src/assets/check-outline.svg" alt="" />
+                        <img className="checkSuccess" loading="lazy" src={successIcon} alt="" />
                         <p className="successMsg">
                             <span className="welcome">Willkommen!</span>
                             {` Eine Bestätigungs-E-Mail wurde an "${email}" gesendet.

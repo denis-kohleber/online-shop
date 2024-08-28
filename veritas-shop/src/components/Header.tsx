@@ -1,15 +1,18 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom"
+import Logo from "../assets/veritas-logo.svg";
 
-const Header = forwardRef<HTMLElement>((props, ref) => {
+
+
+const Header = forwardRef<HTMLElement>((_props, ref) => {
     return (
       <header className="header" ref={ref}>
         <div className="headerBg"></div>
         <Link to="/" aria-hidden="true" tabIndex={-1}>
-          <img className="logo" src="src/assets/veritas-logo.svg" alt="veritas"/>
+          <img className="logo" src={Logo} alt="veritas"/>
         </Link>
       </header>
     )
 })
   
-  export { Header }
+export { Header }
