@@ -100,7 +100,7 @@ function Footer() {
 
                 <article className="infoArticle" aria-label='Information'>
                     <section className="infoSection">
-                        <h2 className="infoHeadline" onClick={() => activateDropdown(1, null)}>Service Hotline</h2>
+                        <h2 className="infoHeadline infoHeadline01 btn" onClick={() => activateDropdown(1, null)}>Service Hotline</h2>
                         <ul className="infoList" ref={infoList01Ref}>
                             <li>Produktberatung und Service:</li>
                             <li className="phoneNumber"><Link to="/404" onFocus={(e) => activateDropdown(1, e)}>
@@ -111,7 +111,7 @@ function Footer() {
                     </section>
                 
                     <section className="infoSection">
-                        <h2 className="infoHeadline" onClick={() => activateDropdown(2, null)}>
+                        <h2 className="infoHeadline infoHeadline02 btn" onClick={() => activateDropdown(2, null)}>
                             Bestellung & Versand</h2>
                         <ul className="infoList" ref={infoList02Ref}>
                             <li><Link to="/404" onFocus={(e) => activateDropdown(2, e)}>
@@ -128,7 +128,7 @@ function Footer() {
                     </section>
                     
                     <section className="infoSection">
-                        <h2 className="infoHeadline" onClick={() => activateDropdown(3, null)}>Informationen</h2>
+                        <h2 className="infoHeadline infoHeadline03 btn" onClick={() => activateDropdown(3, null)}>Informationen</h2>
                         <ul className="infoList" ref={infoList03Ref}>
                             <li><Link to="/404" onFocus={(e) => activateDropdown(3, e)}>Stellenangebote</Link></li>
                             <li><Link to="/404" onFocus={(e) => activateDropdown(3, e)}>Unternehmen</Link></li>
