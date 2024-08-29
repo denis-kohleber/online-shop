@@ -5,6 +5,7 @@ import logoWhite from "../assets/veritas-logo-white.svg";
 import searchIcon01 from "../assets/magnify.svg";
 import searchIcon02 from "../assets/magnify02.svg";
 import cartIcon from "../assets/cart.svg";
+import "./styles/Navbar.css"
 
 interface Props {
     inView: boolean;

@@ -88,7 +88,7 @@ function Newsletter() {
                             <label className="newsletterLabel" htmlFor="newsletterInput">
                                 Melden Sie sich zum Newsletter an:</label>
                             <div className="newsletterInputContainer">
-                                <input className="newsletterInput" maxLength={40} name="email" type="email" 
+                                <input className="newsletterInput" autoComplete="on" maxLength={40} name="email" type="email" 
                                 id="newsletterInput" ref={emailInput} required placeholder="Ihre E-Mail-Adresse"/>
                                 <button type="submit" className="newsletterSubmitBtn">Anmelden</button>
                             </div>

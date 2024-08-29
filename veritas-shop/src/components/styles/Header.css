@@ -1,0 +1,25 @@
+/* || HEADER */
+
+.header {
+  width: 100%;
+  height: clamp(85px, 26vw, 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accentColor);
+  position: relative;  
+}
+
+.headerBg {
+  background-color: #181818;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  height: clamp(70px, 20vw, 90px);
+}

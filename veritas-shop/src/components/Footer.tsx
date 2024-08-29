@@ -6,6 +6,7 @@ import truckIcon from "../assets/store.svg";
 import coinIcon from "../assets/hand-coin.svg";
 import packageIcon from "../assets/package.svg";
 import githubIcon from "../assets/github.svg";
+import "./styles/Footer.css"
 
 function Footer() {
     // Dropdown by < 700 screen-width

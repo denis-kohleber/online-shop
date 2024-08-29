@@ -1,8 +1,7 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom"
 import Logo from "../assets/veritas-logo.svg";
-
-
+import "./styles/Header.css";
 
 const Header = forwardRef<HTMLElement>((_props, ref) => {
     return (

@@ -17,6 +17,7 @@ import arrowLeft from "../assets/chevron-left.svg"
 import { useEffect, useState } from "react";
 import arrow from "../assets/arrow.svg"
 import { Link } from "react-router-dom";
+import "./styles/HeroBanner.css"
 
 const HeroBanner = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, 
@@ -24,12 +25,6 @@ const HeroBanner = () => {
     
     // Save the actual banner-index
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    
-    const slides = [
-        { src: img01, alt: 'Slide 1' },
-        { src: img02, alt: 'Slide 2' },
-        { src: img03, alt: 'Slide 3' }
-    ];
 
     // Refresh the active dot index
     useEffect(() => {
@@ -54,9 +49,9 @@ const HeroBanner = () => {
     };
 
     return (
-      <section className="embla" ref={emblaRef}>
-        <div className="embla__container">
-          <div className="embla__slide">
+      <section className="embla hero" ref={emblaRef}>
+        <div className="embla__container hero">
+          <div className="embla__slide hero">
             <article className="banner01 banner">
                 <img src={img01}
                 srcSet={`${img01s} 600w, ${img01m} 1000w, ${img01l} 1500w, ${img01} 1900w`}
@@ -76,7 +71,7 @@ const HeroBanner = () => {
                 </div>
             </article>
           </div>
-          <div className="embla__slide">
+          <div className="embla__slide hero">
             <article className="banner02 banner">
                 <img src={img02}
                 srcSet={`${img02s} 600w, ${img02m} 1000w, ${img02l} 1500w, ${img02} 1900w`}
@@ -96,7 +91,7 @@ const HeroBanner = () => {
                 </div>
             </article>
           </div>
-          <div className="embla__slide">
+          <div className="embla__slide hero">
             <article className="banner03 banner">
                 <img src={img03}
                 srcSet={`${img03s} 600w, ${img03m} 1000w, ${img03l} 1500w, ${img03} 1900w`}
@@ -117,22 +112,22 @@ const HeroBanner = () => {
             </article>
           </div>
         </div>
-        <button onClick={handlePrev} className="carouselBtn prevBtn" aria-label="Nächstes Banner">
+        <button onClick={handlePrev} className="carouselBtn hero prevBtn" aria-label="Nächstes Banner">
             <img src={arrowLeft} alt="Arrow-Left" />
         </button>
-        <button onClick={handleNext} className="carouselBtn nextBtn" aria-label="Vorheriges Banner">
+        <button onClick={handleNext} className="carouselBtn hero nextBtn" aria-label="Vorheriges Banner">
             <img src={arrowRight} alt="Arrow-Right" />
         </button>
-        <div className="embla__dots">
-                {slides.map((_, index) => (
-                    <button
-                        key={index}
-                        tabIndex={-1}
-                        aria-hidden={true}
-                        className={`embla__dot ${currentIndex === index ? 'active' : ''}`}
-                        onClick={() => emblaApi && emblaApi.scrollTo(index)}
-                    />
-                ))}
+        <div className="embla__dots hero">
+        {[0, 1, 2].map((index) => (
+                <button
+                key={index}
+                tabIndex={-1}
+                aria-hidden={true}
+                className={`embla__dot hero ${currentIndex === index ? 'active' : ''}`}
+                onClick={() => emblaApi && emblaApi.scrollTo(index)}
+                />
+            ))}
         </div>
       </section>
     )

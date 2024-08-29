@@ -1,0 +1,82 @@
+/* || SECTION - HIGHLIGHTS */
+
+.highlightsSection {
+    background-color: var(--accentColor);
+}
+
+.highlightsSectionContainer {
+padding: var(--contentSpace) 7vw;
+display: flex;
+flex-flow: column;
+gap: 60px;
+justify-content: space-between;
+align-items: center;
+width: calc(100% - 14vw);
+max-width: 1200px;
+margin: auto;
+}
+
+.highlightsH2 {
+margin-bottom: 15px;
+font-size: 3.5rem;
+font-family: 'RobotoSlab', sans-serif;
+font-weight: bold;
+letter-spacing: 5px;
+text-align: center;
+}
+
+.highlightsH3 {
+font-size: 2rem;
+font-family: 'RobotoSlab', sans-serif;
+font-weight: 500;
+letter-spacing: 2.5px;
+text-align: center;
+}
+
+@media screen and (max-width: 630px) {
+.highlightsH2 {
+    font-size: 2.8rem;
+}
+
+.highlightsH3 {
+    font-size: 1.5rem;
+}
+}
+
+@media screen and (max-width: 460px) {
+.highlightsH2 {
+    font-size: 2.2rem;
+}
+.highlightsH3 {
+    font-size: 1.4rem;
+}
+}
+
+@media screen and (max-width: 380px) {
+.highlightsH2 {
+    font-size: 1.9rem;
+    letter-spacing: 3px;
+}
+.highlightsH3 {
+    font-size: 1.3rem;
+}
+}
+
+/* || CAROUSEL PRODUCTS */
+
+.embla.hl {
+    overflow: hidden;
+    background-color: var(--secondaryColor);
+    position: relative;
+}
+
+.embla__container.hl {
+    display: flex;
+}
+
+.embla__slide.hl {
+    flex: 0 0 100%;
+    min-width: 0;
+    max-height: 60vh;
+    position: relative;
+}
