@@ -1,15 +1,15 @@
-import img01 from "../assets/heroBanner/herobanner01.jpg";
-import img01s from "../assets/heroBanner/herobanner01s.jpg";
-import img01m from "../assets/heroBanner/herobanner01m.jpg";
-import img01l from "../assets/heroBanner/herobanner01l.jpg";
-import img02 from "../assets/heroBanner/herobanner02.jpg";
-import img02s from "../assets/heroBanner/herobanner02s.jpg";
-import img02m from "../assets/heroBanner/herobanner02m.jpg";
-import img02l from "../assets/heroBanner/herobanner02l.jpg";
-import img03 from "../assets/heroBanner/herobanner03.jpg";
-import img03s from "../assets/heroBanner/herobanner03s.jpg";
-import img03m from "../assets/heroBanner/herobanner03m.jpg";
-import img03l from "../assets/heroBanner/herobanner03l.jpg";
+import img01 from "../assets/heroBanner/herobanner01.webp";
+import img01s from "../assets/heroBanner/herobanner01s.webp";
+import img01m from "../assets/heroBanner/herobanner01m.webp";
+import img01l from "../assets/heroBanner/herobanner01l.webp";
+import img02 from "../assets/heroBanner/herobanner02.webp";
+import img02s from "../assets/heroBanner/herobanner02s.webp";
+import img02m from "../assets/heroBanner/herobanner02m.webp";
+import img02l from "../assets/heroBanner/herobanner02l.webp";
+import img03 from "../assets/heroBanner/herobanner03.webp";
+import img03s from "../assets/heroBanner/herobanner03s.webp";
+import img03m from "../assets/heroBanner/herobanner03m.webp";
+import img03l from "../assets/heroBanner/herobanner03l.webp";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from "embla-carousel-autoplay"
 import arrowRight from "../assets/chevron-right.svg"
@@ -54,7 +54,7 @@ const HeroBanner = () => {
     };
 
     return (
-      <div className="embla" ref={emblaRef}>
+      <section className="embla" ref={emblaRef}>
         <div className="embla__container">
           <div className="embla__slide">
             <article className="banner01 banner">
@@ -134,7 +134,7 @@ const HeroBanner = () => {
                     />
                 ))}
         </div>
-      </div>
+      </section>
     )
 }
   
