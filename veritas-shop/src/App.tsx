@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar"
 import { Footer } from "./components/Footer";
 import { HeroBanner } from "./components/HeroBanner";
 import { Categories } from "./components/Categories";
+import { AboutUs } from "./components/AboutUs";
 
 function App() {
   const { ref, inView } = useInView({ 
@@ -18,8 +19,9 @@ function App() {
       <main>
         <HeroBanner />
         <Categories />
-      </main>
       <div className="placeholder"></div>
+        <AboutUs/>
+      </main>
       <Footer />
     </>
   )
