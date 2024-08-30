@@ -4,6 +4,7 @@ import Autoplay from "embla-carousel-autoplay"
 import arrowRight from "../assets/chevron-right.svg"
 import arrowLeft from "../assets/chevron-left.svg"
 import "./styles/Highlights.css"
+import { ProductCard } from "./ProductCard";
 
 const Highlights = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, 
@@ -42,23 +43,25 @@ const Highlights = () => {
                     <h3 className="highlightsH3">Die Season Favoriten auf einen Blick!</h3>
                 </div>
 
-                <section className="embla hl" ref={emblaRef}>
+                <ProductCard />
+
+                {/* <div className="embla hl" ref={emblaRef}>
                     <div className="embla__container hl">
-                    <div className="embla__slide hl">
-                        <article className="banner01 banner">
-                            Hallo
-                        </article>
-                    </div>
-                    <div className="embla__slide hl">
-                        <article className="banner02 banner">
-                            b
-                        </article>
-                    </div>
-                    <div className="embla__slide hl">
-                        <article className="banner03 banner">
-                            d
-                        </article>
-                    </div>
+                        <div className="embla__slide hl">
+                            <article className="banner01 banner">
+                                
+                            </article>
+                        </div>
+                        <div className="embla__slide hl">
+                            <article className="banner02 banner">
+                                b
+                            </article>
+                        </div>
+                        <div className="embla__slide hl">
+                            <article className="banner03 banner">
+                                d
+                            </article>
+                        </div>
                     </div>
                     <button onClick={handlePrev} className="carouselBtn hl prevBtn" aria-label="Nächstes Banner">
                         <img src={arrowLeft} alt="Arrow-Left" />
@@ -68,16 +71,13 @@ const Highlights = () => {
                     </button>
                     <div className="embla__dots hl">
                     {[0, 1, 2].map((index) => (
-                            <button
-                            key={index}
-                            tabIndex={-1}
-                            aria-hidden={true}
+                            <button key={index} tabIndex={-1} aria-hidden={true}
                             className={`embla__dot hl ${currentIndex === index ? 'active' : ''}`}
                             onClick={() => emblaApi && emblaApi.scrollTo(index)}
                             />
                         ))}
                     </div>
-                </section>
+                </div> */}
             </div>
         </section>
     )

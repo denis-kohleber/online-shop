@@ -57,6 +57,7 @@ const HeroBanner = () => {
                 srcSet={`${img01s} 600w, ${img01m} 1000w, ${img01l} 1500w, ${img01} 1900w`}
                 alt=""
                 className="carouselImg"
+                onClick={handleNext}
                 />
                 <div className="bannerContentContainer">
                     <div className="bannerText">
@@ -77,6 +78,7 @@ const HeroBanner = () => {
                 srcSet={`${img02s} 600w, ${img02m} 1000w, ${img02l} 1500w, ${img02} 1900w`}
                 alt=""
                 className="carouselImg"
+                onClick={handleNext}
                 />
                 <div className="bannerContentContainer">
                     <div className="bannerText">
@@ -97,6 +99,7 @@ const HeroBanner = () => {
                 srcSet={`${img03s} 600w, ${img03m} 1000w, ${img03l} 1500w, ${img03} 1900w`}
                 alt=""
                 className="carouselImg"
+                onClick={handleNext}
                 />
                 <div className="bannerContentContainer">
                     <div className="bannerText bannerText03">
