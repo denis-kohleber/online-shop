@@ -6,11 +6,12 @@
   --primaryColor: #ffffff;
   --primaryColor2: #f3f6f2;
   --primaryColor3: #c5c5c5;
-  --secondaryColor: #181818;
+  --secondaryColor: #242424;
   --secondaryColor2: #242424;
   --secondaryColor3: #282828;
   --accentColor: #facc61;
   --filterYellow: brightness(0) saturate(100%) invert(84%) sepia(15%) saturate(1627%) hue-rotate(343deg) brightness(102%) contrast(96%);
+  --filterBlack: brightness(0) saturate(100%) invert(10%) sepia(2%) saturate(8%) hue-rotate(314deg) brightness(100%) contrast(90%);
   --standartShadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
   --contentSpace: min(15vh, 200px);
 }

@@ -15,8 +15,8 @@ function Newsletter() {
         
         // Adjust a fixed height
         if (section.current) {
-            section.current.style.height = 
-            section.current.clientHeight - 60 + 'px';
+            const rect = section.current.getBoundingClientRect();
+            section.current.style.height = (rect.height - 60) + 'px';
         }
         
         // Set the SuccessMsg with the e-mail

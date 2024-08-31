@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from "embla-carousel-autoplay"
 import arrowRight from "../assets/chevron-right.svg"
@@ -6,26 +5,10 @@ import arrowLeft from "../assets/chevron-left.svg"
 import "./styles/Highlights.css"
 import { ProductCard } from "./ProductCard";
 
+
 const Highlights = () => {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, 
-        [Autoplay({delay: 5000})])
-    
-    // Save the actual banner-index
-    const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-    // Refresh the active dot index
-    useEffect(() => {
-        if (!emblaApi) return;
-
-        const handleSelect = () => setCurrentIndex(emblaApi.selectedScrollSnap());
-
-        handleSelect(); // Set initial index
-        emblaApi.on('select', handleSelect);
-
-        return () => {
-            if(emblaApi) emblaApi.off('select', handleSelect);
-        }
-    }, [emblaApi]);
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40, watchFocus: true }, 
+        [Autoplay({delay: 2500, stopOnMouseEnter: true, stopOnFocusIn: true})]);
     
     const handleNext = () => {
         if (emblaApi) emblaApi.scrollNext();
@@ -43,41 +26,40 @@ const Highlights = () => {
                     <h3 className="highlightsH3">Die Season Favoriten auf einen Blick!</h3>
                 </div>
 
-                <ProductCard />
-
-                {/* <div className="embla hl" ref={emblaRef}>
+                <div className="embla hl" ref={emblaRef}>
                     <div className="embla__container hl">
                         <div className="embla__slide hl">
-                            <article className="banner01 banner">
-                                
-                            </article>
+                                <div className="cardContainer">
+                                    <ProductCard key={1} />
+                                    <ProductCard key={2} />
+                                    <ProductCard key={3} />
+                                    <ProductCard key={4} />
+                                </div>
                         </div>
                         <div className="embla__slide hl">
-                            <article className="banner02 banner">
-                                b
-                            </article>
+                                <div className="cardContainer">
+                                    <ProductCard key={5} />
+                                    <ProductCard key={6} />
+                                    <ProductCard key={7} />
+                                    <ProductCard key={8} />
+                                </div>
                         </div>
                         <div className="embla__slide hl">
-                            <article className="banner03 banner">
-                                d
-                            </article>
+                                <div className="cardContainer">
+                                    <ProductCard key={9} />
+                                    <ProductCard key={10}/>
+                                    <ProductCard key={11}/>
+                                    <ProductCard key={12}/>
+                                </div>
                         </div>
                     </div>
                     <button onClick={handlePrev} className="carouselBtn hl prevBtn" aria-label="Nächstes Banner">
-                        <img src={arrowLeft} alt="Arrow-Left" />
+                        <img className="carouselBtnImg" src={arrowLeft} alt="Arrow-Left" />
                     </button>
                     <button onClick={handleNext} className="carouselBtn hl nextBtn" aria-label="Vorheriges Banner">
-                        <img src={arrowRight} alt="Arrow-Right" />
+                        <img className="carouselBtnImg carouselBtnImg02" src={arrowRight} alt="Arrow-Right" />
                     </button>
-                    <div className="embla__dots hl">
-                    {[0, 1, 2].map((index) => (
-                            <button key={index} tabIndex={-1} aria-hidden={true}
-                            className={`embla__dot hl ${currentIndex === index ? 'active' : ''}`}
-                            onClick={() => emblaApi && emblaApi.scrollTo(index)}
-                            />
-                        ))}
-                    </div>
-                </div> */}
+                </div>
             </div>
         </section>
     )
