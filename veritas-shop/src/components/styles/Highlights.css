@@ -70,7 +70,7 @@
 
 .embla.hl {
     position: relative;
-    max-width: 80vw;
+    max-width: 85vw;
   }
   
 .embla__container.hl {
@@ -93,28 +93,6 @@
     margin: auto;
 }
 
-@media screen and (max-width: 1200px) {
-    .cardContainer {
-        display: grid;
-        grid-template: auto auto / auto auto;
-        gap: 5vw;
-        justify-content: center;
-    }
-}
-
-
-@media screen and (max-width: 650px) {
-    .carouselBtn.hl {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .cardContainer {
-        grid-template: auto auto auto auto / auto;
-        gap: 30px;
-    }
-}
 .carouselBtn.hl {
     background-color: #00000000;
     border: none;
@@ -157,4 +135,33 @@
     border-radius: 24px;
     height: 430px;
     width: 260px;
+}
+
+@media screen and (max-width: 1200px) {
+    .cardContainer {
+        display: grid;
+        grid-template: auto auto / auto auto;
+        gap: 5vw;
+        justify-content: center;
+    }
+    .prevBtn.hl {
+        left: -60px;
+    }
+      
+    .nextBtn.hl {
+        right: -60px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .carouselBtn.hl {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .cardContainer {
+        grid-template: auto auto auto auto / auto;
+        gap: 30px;
+    }
 }
