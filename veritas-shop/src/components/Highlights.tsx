@@ -5,6 +5,7 @@ import arrowLeft from "../assets/regular-icons/chevron-left.svg"
 import "./styles/Highlights.css"
 import { ProductCard } from "./ProductCard";
 import shoeData from "../shoeData.json"
+import { FadeInAnimation } from './FadeInAnimation';
 
 const Highlights = () => {
     // Shoe Data
@@ -37,10 +38,10 @@ const Highlights = () => {
     return (
         <section className="highlightsSection">
             <div className="highlightsSectionContainer">
-                <div className="highlightsHeaderContainer">
+                <FadeInAnimation classContainer="highlightsHeaderContainer">
                     <h2 className="highlightsH2">Top Highlights</h2>
                     <h3 className="highlightsH3">Die Season Favoriten auf einen Blick!</h3>
-                </div>
+                </FadeInAnimation>
 
                 <div className="embla hl" ref={emblaRef}>
                     <div className="embla__container hl">

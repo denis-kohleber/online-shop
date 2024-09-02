@@ -29,9 +29,6 @@ const ProductCard = ({id, title, price, description, type, imageFront,
     const [isLoaded, setLoaded] = useState<boolean>(false);
     const addCartBtn = useRef<HTMLButtonElement>(null);
 
-    const n = [description, waterproof, type];
-    console.log(n);
-
     // Expand the "Add Cart" Button
     useEffect(() => {
         if (windowWidth < 1100) return;

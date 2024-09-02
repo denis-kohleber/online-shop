@@ -8,8 +8,12 @@ import placeholderAboutUsImg01 from "../assets/placeholder/aboutUsImg/img03.webp
 import logo from "../assets/veritas-logo-etc/logo02.svg"
 import "./styles/AboutUs.css"
 import { FancyImg } from "./FancyImg";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const AboutUs = () => {
+    const div = useRef<HTMLDivElement>(null);
+    const isInView = useInView(div, { once: true, margin: '0px 0px -300px 0px' });
 
     return (
         <section className="aboutUs">
@@ -25,7 +29,7 @@ const AboutUs = () => {
                 initialX={-150}
                 animateOpacity={1}
                 animateX={0}
-                transitionDuration={0.6}/>
+                transitionDuration={1.5}/>
 
                 <div className="aboutUsImg02Wrapper">
                 <FancyImg 
@@ -39,7 +43,7 @@ const AboutUs = () => {
                 initialX={-150}
                 animateOpacity={1}
                 animateX={0}
-                transitionDuration={0.6}/>
+                transitionDuration={1.5}/>
                 </div>
 
                 <FancyImg 
@@ -53,10 +57,15 @@ const AboutUs = () => {
                 initialX={-150}
                 animateOpacity={1}
                 animateX={0}
-                transitionDuration={0.6}/>
+                transitionDuration={1.5}/>
             </div> 
 
-            <div className="aboutUsContentContainer">
+            <motion.div
+            ref={div}
+            initial={{ opacity: 0 , y: -150}}
+            animate={isInView ? { opacity: 1 , y: 0} : {}}
+            transition={{ duration: 3, type: 'spring'}}
+            className="aboutUsContentContainer">
                 <img src={logo} alt="Veritas-Logo" loading="lazy" />
                 <h2 className="aboutUsH">Leitprinzipien <br/> im Fokus</h2>
                 <p className="aboutUsP">
@@ -67,7 +76,7 @@ const AboutUs = () => {
                     Ein Unternehmen, das sich klaren Werten verpflichtet.
                 </p>
                 <Link to={"/"} className="learnMoreLink btn">MEHR ERFAHREN</Link>
-            </div>
+            </motion.div>
         </section>
     )
 }

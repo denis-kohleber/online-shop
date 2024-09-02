@@ -47,7 +47,7 @@ const FancyImg = ({
     const isInView = useInView(div, { once: true, margin: '0px 0px -200px 0px' });
 
     return (
-        <AnimatePresence mode="wait">
+        <AnimatePresence >
             <motion.div
                 ref={div}
                 initial={{ opacity: initialOpacity, y: initialY, x:initialX }}
@@ -55,6 +55,12 @@ const FancyImg = ({
                 exit={{ opacity: exitOpacity }}
                 transition={{ duration: transitionDuration, delay: transitionDelay, type: 'spring' }}
                 className={`imgContainer ${classContainer}`}
+                onHoverStart={() => {
+                    // Prevent that motion framer set "transform: none"
+                    if (div.current) {
+                      div.current.style.transform = '';
+                    }
+                }}
             >
                 <img
                     className={`placeholderImg ${classPlaceholder} ${isLoaded ? "" : "notLoaded"}`}

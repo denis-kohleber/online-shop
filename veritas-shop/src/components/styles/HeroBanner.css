@@ -127,20 +127,26 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear,
+  transform 0.2s linear;
 }
 
 .prevBtn.hero {
-  left: 0;
+  left: 10px;
 }
 
 .nextBtn.hero {
-  right: 0;
+  right: 10px;
 }
 
 .carouselBtn.hero:hover, .carouselBtn.hero:focus {
   opacity: 1;
   filter: var(--filterYellow);
+  transform: translate(-10px, -50%);
+}
+
+.carouselBtn.hero.nextBtn:hover, .carouselBtn.hero.nextBtn:focus {
+  transform: translate(10px, -50%);
 }
 
 @media screen and (max-width: 1000px) {
