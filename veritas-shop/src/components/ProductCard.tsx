@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import { useWindowWidth } from "../hooks/useWindowWidth"
 import { getImageURL, getPlaceholderImageURL } from "../utils/image-util";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { SizeModal, SizeModalHandles } from "./SizeChoiceModal";
 
 
 interface Props {
@@ -48,6 +49,15 @@ const ProductCard = ({id, title, price, description, type, imageFront,
         setHover(() => false)
     }
 
+    // Modal 
+    const [selectedSize, setSelectedSize] = useState<number | null>(null);
+    const modalRef = useRef<SizeModalHandles>(null);
+
+    const openModal = () => {
+        modalRef.current?.open();
+        modalRef.current?.blur();
+    }
+
     return (
         <Link className="productLink" to={"/"}
         onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
@@ -87,8 +97,9 @@ const ProductCard = ({id, title, price, description, type, imageFront,
                     </figcaption>
                 </figure>
 
-                <button ref={addCartBtn} className="addCartBtn">Warenkorb hinzufügen</button>
+                <button ref={addCartBtn} onClick={openModal} className="addCartBtn">Warenkorb hinzufügen</button>
             </article>
+            <SizeModal ref={modalRef} setSize={(size) => setSelectedSize(size)} />
         </Link>
     )
 }

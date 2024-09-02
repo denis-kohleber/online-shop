@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { motion, AnimatePresence, useInView, spring } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 interface Props {
     srcPlaceholder: string;

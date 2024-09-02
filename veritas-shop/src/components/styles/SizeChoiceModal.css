@@ -1,0 +1,91 @@
+.modalSizes {
+    border-radius: 24px;
+    border: none;
+    cursor: default;
+    transition: display 0.3s allow-discrete, 
+    overlay 0.3s allow-discrete;
+    animation: close 0.5s forwards;
+    &[open] {
+      animation: open 0.5s forwards;
+    }
+}
+  
+@keyframes open {
+    from {
+    opacity: 0;
+    transform: translateY(-50px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+@keyframes close {
+    from {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    to {
+    opacity: 0;
+    transform: translateY(-50px);
+    }
+}
+
+.modalSizesContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 10px;
+    position: relative;
+}
+
+.closeBtnModalSizes {
+    position: absolute;
+    top: -0px;
+    right: -0px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.closeBtnModalSizes > img {
+    width: 30px;
+}
+
+.closeBtnModalSizes:hover > img, .closeBtnModalSizes:focus > img {
+    filter: var(--filterYellow);
+}
+
+.modalSizesH {
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: 'RobotoSlab', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.sizesContainer {
+    display: flex;
+    flex-flow: wrap;
+    max-width: 250px;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sizeButton {
+    padding: 15px;
+    border-radius: 16px;
+    background-color: var(--accentColor);
+    border: none;
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sizeButton::before {
+    background-color: #5e8dbb;
+}

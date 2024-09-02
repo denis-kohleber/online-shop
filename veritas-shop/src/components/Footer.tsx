@@ -49,10 +49,10 @@ function Footer() {
         timeoutRef01.current = setTimeout(() => {
             resetDropdown(currentRef)
         }, 400);
-        // Close automatically after 20s
+        // Close automatically after 15s
         timeoutRef02.current = setTimeout(() => {
             resetDropdown(null)
-        }, 20000);
+        }, 15000);
     }
 
     const resetDropdown = (currentRef: React.RefObject<HTMLUListElement> | null ) => {
