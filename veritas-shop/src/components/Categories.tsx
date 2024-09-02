@@ -16,20 +16,28 @@ const Categories = () => {
   const figures = [useRef(null), useRef(null), useRef(null)];
   const controls = [useAnimation(), useAnimation(), useAnimation()];
   const images = [
-    { src: outdoorImg, placeholder: outdoorImgPlaceholder, btnText:"OUTDOOR", alt: "Mann wandert im Wald", link: "/", captionClass: "categoryCaption01", className: "category01" },
-    { src: workwearImg, placeholder: workwearImgPlaceholder, btnText:"WORKWEAR", alt: "Mechanikerin am arbeiten", link: "/", captionClass: "categoryCaption02", className: "category02" },
-    { src: sportImg, placeholder: sportImgPlaceholder, btnText:"SPORT", alt: "Gewichtheber am Gewichtheben", link: "/", captionClass: "categoryCaption03", className: "category03" },
+    { src: outdoorImg, placeholder: outdoorImgPlaceholder, btnText:"OUTDOOR", 
+        alt: "Mann wandert im Wald", link: "/", 
+        captionClass: "categoryCaption01", className: "category01" },
+    { src: workwearImg, placeholder: workwearImgPlaceholder, btnText:"WORKWEAR", 
+        alt: "Mechanikerin am arbeiten", link: "/", 
+        captionClass: "categoryCaption02", className: "category02" },
+    { src: sportImg, placeholder: sportImgPlaceholder, btnText:"SPORT", 
+        alt: "Gewichtheber am Gewichtheben", link: "/", 
+        captionClass: "categoryCaption03", className: "category03" },
   ];
 
   // Controll if Element is inView
-  const isInView = figures.map((figure) => useInView(figure, { once: true, margin: '0px 0px -100px 0px' }));
+  const isInView = figures.map((figure) => 
+    useInView(figure, { once: true, margin: '0px 0px -300px 0px' }));
 
   // Start animation
   useEffect(() => {
     const sequenceAnimations = async () => {
       for (let i = 0; i < controls.length; i++) {
         if (isInView[i]) {
-          await controls[i].start({ opacity: 1, x: 0, transition: { duration: 0.5, type: 'tween' } });
+          await controls[i].start(
+            { opacity: 1, x: 0, scale: 1, transition: { duration: 0.4, type: 'tween' } });
         }
       }
     };
@@ -55,7 +63,7 @@ const Categories = () => {
                 className={`${image.className} category`}
                 key={image.src}
                 ref={figures[index]}
-                initial={{ opacity: 0, x: 100 }}
+                initial={{ opacity: 0, x: 100, scale: 1.3 }}
                 animate={controls[index]}
                 >
                 <FancyImg
