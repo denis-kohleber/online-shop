@@ -1,8 +1,13 @@
 import outdoorImg from "../assets/categories/outdoor-category.webp";
 import workwearImg from "../assets/categories/work-category.webp";
 import sportImg from "../assets/categories/sport-category.webp";
+import outdoorImgPlaceholder from "../assets/placeholder/categories/outdoor-category.webp";
+import workwearImgPlaceholder from "../assets/placeholder/categories/work-category.webp";
+import sportImgPlaceholder from "../assets/placeholder/categories/sport-category.webp";
 import { Link } from "react-router-dom";
 import "./styles/Categories.css"
+import { FancyImg } from "./FancyImg";
+
 
 const Categories = () => {
     return (
@@ -16,21 +21,30 @@ const Categories = () => {
 
             <div className="categoriesContainer">
                 <figure className="category01 category">
-                    <img src={outdoorImg} loading="lazy" alt="Mann wandert im Wald" className="categoryImg01 categoryImg" />
+                    <FancyImg srcImg={outdoorImg} 
+                    srcPlaceholder={outdoorImgPlaceholder} 
+                    alt="Mann wandert im Wald" 
+                    classContainer="categoryImg"/>
                     <figcaption className="categoryCaption categoryCaption01">
                         <Link to={"/"} className="categoryLink01 categoryLink btn">OUTDOOR</Link>
                     </figcaption>
                 </figure>
 
                 <figure className="category02 category">
-                    <img src={workwearImg} loading="lazy" alt="Frau arbeitet an Maschine" className="categoryImg02 categoryImg" />
+                    <FancyImg srcImg={workwearImg} 
+                    srcPlaceholder={workwearImgPlaceholder} 
+                    alt="Mann wandert im Wald" 
+                    classContainer="categoryImg"/>
                     <figcaption className="categoryCaption categoryCaption02">
                         <Link to={"/"} className="categoryLink02 categoryLink btn">WORKWEAR</Link>
                     </figcaption>
                 </figure>
 
                 <figure className="category03 category">
-                    <img src={sportImg} loading="lazy" alt="Mann beim Gewichtheben" className="categoryImg03 categoryImg" />
+                    <FancyImg srcImg={sportImg} 
+                    srcPlaceholder={sportImgPlaceholder} 
+                    alt="Mann wandert im Wald" 
+                    classContainer="categoryImg"/>
                     <figcaption className="categoryCaption categoryCaption03">
                         <Link to={"/"} className="categoryLink03 categoryLink btn">SPORT</Link>
                     </figcaption>

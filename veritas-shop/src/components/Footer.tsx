@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Newsletter } from "./Newsletter";
 import { useRef } from "react";
-import storeIcon from "../assets/store.svg";
-import truckIcon from "../assets/store.svg";
-import coinIcon from "../assets/hand-coin.svg";
-import packageIcon from "../assets/package.svg";
-import githubIcon from "../assets/github.svg";
+import storeIcon from "../assets/benefits-icons/store.svg";
+import truckIcon from "../assets/benefits-icons/truck.svg";
+import coinIcon from "../assets/benefits-icons/hand-coin.svg";
+import packageIcon from "../assets/benefits-icons/package.svg";
+import githubIcon from "../assets/regular-icons/github.svg";
 import "./styles/Footer.css"
 
 function Footer() {

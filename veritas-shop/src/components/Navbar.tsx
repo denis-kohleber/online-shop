@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useWindowWidth } from '../hooks/useWindowWidth';
-import logoWhite from "../assets/veritas-logo-white.svg";
-import searchIcon01 from "../assets/magnify.svg";
-import searchIcon02 from "../assets/magnify02.svg";
-import cartIcon from "../assets/cart.svg";
+import logoWhite from "../assets/veritas-logo-etc/veritas-logo-white.svg";
+import searchIcon01 from "../assets/regular-icons/magnify.svg";
+import searchIcon02 from "../assets/regular-icons/magnify02.svg";
+import cartIcon from "../assets/regular-icons/cart.svg";
 import "./styles/Navbar.css"
 
 interface Props {

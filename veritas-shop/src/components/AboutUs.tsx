@@ -2,27 +2,62 @@ import { Link } from "react-router-dom";
 import aboutUsImg03 from "../assets/aboutUsImg/img01.webp";
 import aboutUsImg02 from "../assets/aboutUsImg/img02.webp";
 import aboutUsImg01 from "../assets/aboutUsImg/img03.webp";
-import logo from "../assets/logo02.svg"
+import placeholderAboutUsImg03 from "../assets/placeholder/aboutUsImg/img01.webp";
+import placeholderAboutUsImg02 from "../assets/placeholder/aboutUsImg/img02.webp";
+import placeholderAboutUsImg01 from "../assets/placeholder/aboutUsImg/img03.webp";
+import logo from "../assets/veritas-logo-etc/logo02.svg"
 import "./styles/AboutUs.css"
+import { FancyImg } from "./FancyImg";
 
 const AboutUs = () => {
+
     return (
         <section className="aboutUs">
             <div className="aboutUsImgContainer">
-                <img src={aboutUsImg01} loading="lazy" alt="Pärchen an einer Klippe mit Outdoor-Schuhen" 
-                className="aboutUsImg aboutUsImg01" />
+                <FancyImg 
+                srcImg={aboutUsImg01} 
+                srcPlaceholder={placeholderAboutUsImg01} 
+                alt="Pärchen an einer Klippe mit Outdoor-Schuhen"
+                classContainer="aboutUsImg01Container aboutUsImgWrapper"
+                classPlaceholder="aboutUsImgPlaceholder"
+                classImg="aboutUsImg01"
+                initialOpacity={0}
+                initialX={-150}
+                animateOpacity={1}
+                animateX={0}
+                transitionDuration={0.6}/>
 
-                <div className="aboutUsImg02Container">
-                    <img src={aboutUsImg02} loading="lazy" alt="Frau sitzend in Herbstschuhen" 
-                    className="aboutUsImg aboutUsImg02" />
+                <div className="aboutUsImg02Wrapper">
+                <FancyImg 
+                srcImg={aboutUsImg02} 
+                srcPlaceholder={placeholderAboutUsImg02} 
+                alt="Frau sitzend in Herbstschuhen"
+                classContainer="aboutUsImg02Container aboutUsImgWrapper"
+                classPlaceholder="aboutUsImgPlaceholder"
+                classImg="aboutUsImg02"
+                initialOpacity={0}
+                initialX={-150}
+                animateOpacity={1}
+                animateX={0}
+                transitionDuration={0.6}/>
                 </div>
-                
-                <img src={aboutUsImg03} loading="lazy" alt="Pärchen auf Geländewagen mit Outdoor-Schuhen" 
-                className="aboutUsImg aboutUsImg03" />
-            </div>
+
+                <FancyImg 
+                srcImg={aboutUsImg03} 
+                srcPlaceholder={placeholderAboutUsImg03} 
+                alt="Pärchen auf Geländewagen mit Outdoor-Schuhen"
+                classContainer="aboutUsImg03Container aboutUsImgWrapper"
+                classPlaceholder="aboutUsImgPlaceholder"
+                classImg="aboutUsImg03"
+                initialOpacity={0}
+                initialX={-150}
+                animateOpacity={1}
+                animateX={0}
+                transitionDuration={0.6}/>
+            </div> 
 
             <div className="aboutUsContentContainer">
-                <img src={logo} alt="Veritas-Logo" />
+                <img src={logo} alt="Veritas-Logo" loading="lazy" />
                 <h2 className="aboutUsH">Leitprinzipien <br/> im Fokus</h2>
                 <p className="aboutUsP">
                     Durch kontinuierliche Innovationen in unserem Handwerk haben wir Schuhwerk entwickelt, 

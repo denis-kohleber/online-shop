@@ -12,10 +12,10 @@ import img03m from "../assets/heroBanner/herobanner03m.webp";
 import img03l from "../assets/heroBanner/herobanner03l.webp";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from "embla-carousel-autoplay"
-import arrowRight from "../assets/chevron-right.svg"
-import arrowLeft from "../assets/chevron-left.svg"
+import arrowRight from "../assets/regular-icons/chevron-right.svg"
+import arrowLeft from "../assets/regular-icons/chevron-left.svg"
 import { useEffect, useState } from "react";
-import arrow from "../assets/arrow.svg"
+import arrow from "../assets//regular-icons/arrow.svg"
 import { Link } from "react-router-dom";
 import "./styles/HeroBanner.css"
 
@@ -58,13 +58,16 @@ const HeroBanner = () => {
                 alt=""
                 className="carouselImg"
                 onClick={handleNext}
+                width={"100%"} height={"100%"}
                 />
+
                 <div className="bannerContentContainer">
                     <div className="bannerText">
                         <h2 className="bannerHeadline01 bannerHeadline">Unbeugsame Beständigkeit</h2>
                         <p className="bannerP01 bannerP">Robuste Wanderschuhe für jedes Gelände, maximaler
                         Komfort, bester Halt bei Outdoor-Aktivitäten, die selbst über Belastungsgrenzen gehen.</p>
                     </div>
+
                     <Link to="" className="bannerBtn btn" aria-label="Katalog: Outdoor-Schuhe">
                         Jetzt einkaufen
                         <img src={arrow} alt="" />
@@ -72,6 +75,7 @@ const HeroBanner = () => {
                 </div>
             </article>
           </div>
+
           <div className="embla__slide hero">
             <article className="banner02 banner">
                 <img src={img02}
@@ -79,13 +83,16 @@ const HeroBanner = () => {
                 alt=""
                 className="carouselImg"
                 onClick={handleNext}
+                width={"100%"} height={"100%"}
                 />
+
                 <div className="bannerContentContainer">
                     <div className="bannerText">
                         <h2 className="bannerHeadline01 bannerHeadline">Höchste Leistung</h2>
                         <p className="bannerP01 bannerP">Leistungsstarke Sportschuhe für jedes Training, 
                             ultimative Unterstützung und hervorragende Dämpfung bei Höchstleistung.</p>
                     </div>
+
                     <Link to="" className="bannerBtn btn" aria-label="Katalog: Sportschuhe">
                         Jetzt einkaufen
                         <img src={arrow} alt="" />
@@ -93,6 +100,7 @@ const HeroBanner = () => {
                 </div>
             </article>
           </div>
+
           <div className="embla__slide hero">
             <article className="banner03 banner">
                 <img src={img03}
@@ -100,13 +108,16 @@ const HeroBanner = () => {
                 alt=""
                 className="carouselImg"
                 onClick={handleNext}
+                width={"100%"} height={"100%"}
                 />
+
                 <div className="bannerContentContainer">
                     <div className="bannerText bannerText03">
                         <h2 className="bannerHeadline01 bannerHeadline">Zuverlässiger Schutz</h2>
                         <p className="bannerP01 bannerP">Robuste Arbeitsschuhe für jeden Einsatz, maximaler 
                             Schutz und unvergleichlicher Tragekomfort für selbst widrigste Herausforderungen.</p>
                     </div>
+
                     <Link to="" className="bannerBtn btn" aria-label="Katalog: Arbeitsschuhe">
                         Jetzt einkaufen
                         <img src={arrow} alt="" />
@@ -115,12 +126,15 @@ const HeroBanner = () => {
             </article>
           </div>
         </div>
+
         <button onClick={handlePrev} className="carouselBtn hero prevBtn" aria-label="Nächstes Banner">
             <img src={arrowLeft} alt="Arrow-Left" />
         </button>
+
         <button onClick={handleNext} className="carouselBtn hero nextBtn" aria-label="Vorheriges Banner">
             <img src={arrowRight} alt="Arrow-Right" />
         </button>
+        
         <div className="embla__dots hero">
         {[0, 1, 2].map((index) => (
                 <button

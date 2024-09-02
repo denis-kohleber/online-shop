@@ -18,6 +18,10 @@
   position: relative;
 }
 
+.banner {
+  min-height: 60vh;
+}
+
 .carouselImg {
   height: 60vh;
   width: 100%;
@@ -163,7 +167,7 @@
     border-radius: 0;
     text-align: center;
   }
-  .embla__slide.hero, .carouselImg {
+  .embla__slide.hero, .carouselImg, .banner {
     /* 100svh screen-height - nav-height + top: 25px from Container - header-height */
     min-height: calc(100svh - 55px + 25px - clamp(85px, 26vw, 120px));
   }

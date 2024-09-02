@@ -1,7 +1,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from "embla-carousel-autoplay"
-import arrowRight from "../assets/chevron-right.svg"
-import arrowLeft from "../assets/chevron-left.svg"
+import arrowRight from "../assets/regular-icons/chevron-right.svg"
+import arrowLeft from "../assets/regular-icons/chevron-left.svg"
 import "./styles/Highlights.css"
 import { ProductCard } from "./ProductCard";
 import shoeData from "../shoeData.json"
@@ -61,7 +61,7 @@ const Highlights = () => {
                                 ))}
                             </div>
                         </div>
-                        
+
                         <div className="embla__slide hl">
                             <div className="cardContainer">
                                 {highlightedShoes02.map((shoe) => (

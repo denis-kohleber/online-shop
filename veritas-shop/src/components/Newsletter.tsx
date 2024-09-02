@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react"
-import successIcon from "../assets/check-outline.svg";
+import successIcon from "../assets/regular-icons/check-outline.svg"
 
 function Newsletter() {  
     const [email, setEmail] = useState<string>('');

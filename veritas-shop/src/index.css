@@ -186,6 +186,47 @@ main {
   position: relative;
 }
 
+/* PLACEHOLDER IMAGE */
+
+.imgContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholderImg {
+  max-height: 100%;
+  max-width: 100%;
+  width: 500px;
+  filter: blur(5px);
+  opacity: 0;
+  object-fit: cover;
+}
+
+.placeholderImg.notLoaded {
+  animation: pulsate 1.5s infinite;
+}
+
+.mainImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* Necessary to be global */
 
 .infoHeadline::before {

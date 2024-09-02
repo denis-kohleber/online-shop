@@ -1,6 +1,7 @@
 import starFull from "../assets/rating/star-full.svg";
 import starHalf from "../assets/rating/star-half.svg";
 import starEmpty from "../assets/rating/star-empty.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 
 interface Props {
@@ -36,7 +37,7 @@ const RatingStars = ({rating, indexKey}: Props) => {
 
     const generateStar = (star: string, keyname: string) => {
         return (
-            <img key={keyname} src={star} alt="" loading="lazy" />
+            <LazyLoadImage key={keyname} src={star} alt="" loading="lazy" />
         )
     }
 

@@ -22,6 +22,8 @@ interface Props {
 
 const ProductCard = ({id, title, price, description, type, imageFront,
                     imageBack, rating, waterproof}: Props) => {
+    const formattedPrice = price.toFixed(2).replace('.', ',') + ' €';
+    
     const windowWidth = useWindowWidth();
     const [isHover, setHover] = useState<boolean>(false);
     const [isLoaded, setLoaded] = useState<boolean>(false);
@@ -58,9 +60,8 @@ const ProductCard = ({id, title, price, description, type, imageFront,
                     <div className="productImgContainer">
                         <img className={`placeholderProductImg ${isLoaded ? "" : "notLoaded"}`} 
                             aria-hidden={isLoaded ? true : false}
-                            loading="lazy"
                             src={getPlaceholderImageURL(imageFront)} 
-                            alt="Produktbild-Platzhalter" >
+                            alt="Produktbild" >
                         </img>
 
                         <AnimatePresence mode="wait">
@@ -70,7 +71,7 @@ const ProductCard = ({id, title, price, description, type, imageFront,
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.2 }}
                             >
                                 <LazyLoadImage
                                     className="productImg"
@@ -84,11 +85,11 @@ const ProductCard = ({id, title, price, description, type, imageFront,
                     
                     <figcaption className="productCaption">
                         <h2 className="productName">{title}</h2>
-                        <p className="productPrice">{price.toFixed(2) + " €"}</p>
-                        <RatingStars rating={rating} indexKey={"rating" +id} key={"rating" + id}/>
+                        <p className="productPrice">{formattedPrice}</p>
+                        <RatingStars rating={rating} indexKey={"rating" + id} key={"rating" + id}/>
                     </figcaption>
                 </figure>
-                
+
                 <button ref={addCartBtn} className="addCartBtn">Warenkorb hinzufügen</button>
             </article>
         </Link>
