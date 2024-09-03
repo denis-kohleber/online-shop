@@ -152,15 +152,22 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .carouselBtn.hl {
         display: none;
+    }
+    .cardContainer {
+        grid-template: auto auto / 1fr 1fr;
     }
 }
 
 @media screen and (max-width: 450px) {
+    .embla.hl {
+        position: relative;
+        max-width: 95vw;
+    }
     .cardContainer {
-        grid-template: auto auto auto auto / auto;
-        gap: 30px;
+        gap: 10px;
     }
 }
+
