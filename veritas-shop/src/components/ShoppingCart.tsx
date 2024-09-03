@@ -1,49 +1,85 @@
 import "./styles/ShoppingCart.css";
-import shoe from "../assets/schuhe/schuh04-1.webp"
+import deleteIcon from "../assets/regular-icons/delete.svg"
+import { useCart } from "../contexts/CartContext";
+import { getImageURL } from "../utils/image-util";
+import { useEffect, useState } from "react";
 
 interface Props {
     isCartActive: boolean;
 }
 
 const ShoppingCart = ({ isCartActive }: Props) => {
+    const { clearCart, cartItems, decreaseItem, 
+        increaseItem, total, deleteItem } = useCart();
+    const [ freeDelivery, setFreeDelivery ] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (total < 100) return setFreeDelivery(() => false);
+        setFreeDelivery(() => true);
+    }, [total]);
+    
+    const formatPrice = (price: number) => {
+        return price.toFixed(2).replace('.', ',') + ' €';
+    }
+
+    const showOrderMsg = () => {
+        alert('Vielen Dank! Ihre Bestellung war erfolgreich ... ^^');
+        clearCart();
+    }
 
     return (
         <aside className={`shoppingCartWindow ${isCartActive ? 'active' : ''}`}>
-            <h2 className="shopCartH">{`Warenkorb (${8})`}</h2>
+            <h2 className="shopCartH">{`Warenkorb (${cartItems.reduce((sum, item) => sum + item.quantity, 0)})`}</h2>
 
             <div className="shopCartProductsContainer">
-                <article className="cartProduct">
-                    <img className="cartImg" src={shoe} alt={"Produktbild"} />
+                {cartItems.map((item) => (
+                    <article className="cartProduct" key={item.id}>
+                        <img className="cartImg" src={getImageURL(item.imageFront)} alt={item.title} />
 
-                    <div className="cartProductContainer">
-                        <h3 className="cartProductName">{"Produktname Dummy"}</h3>
+                        <div className="cartProductContainer">
+                            <h3 className="cartProductName">{item.title}</h3>
 
-                        <div className="cartProductDescription">
-                            <p className="cartProductType">{"Arbeitsschuh"}</p>
-                            <p className="cartProductSize">{`Größe: ${42}`}</p>
+                            <div className="cartProductDescription">
+                                <p className="cartProductType">{item.type}</p>
+                                <p className="cartProductSize">{`Größe: ${item.size}`}</p>
+                            </div>
+
+                            <p className="cartProductPrice">{formatPrice(item.price)}</p>
+
+                            <div className="cartProductBtnContainer">
+                                <div className="cartAmountContainer">
+                                    <button className="cartMinusBtn" onClick={() => decreaseItem(item)} 
+                                    aria-label="Einen Artikel entfernen">-</button>
+
+                                    <p className="cartAmountDisplay" aria-label="Artikel Anzahl">{item.quantity}</p>
+
+                                    <button className="cartPlusBtn" onClick={() => increaseItem(item)}  
+                                    aria-label="Einen weiteren Artikel hinzufügen">+</button>
+                                </div>
+                                
+                                <button className="deleteBtn" 
+                                onClick={() => deleteItem(item.id)}  
+                                aria-label="Artikel entfernen">
+                                    <img src={deleteIcon} alt="" />
+                                </button>
+                            </div>
                         </div>
-
-                        <p className="cartProductPrice">{"99,03 €"}</p>
-
-                        <div className="cartAmountContainer">
-                            <button className="cartMinusBtn">-</button>
-                            <p className="cartAmountDisplay">{0}</p>
-                            <button className="cartPlusBtn">+</button>
-                        </div>
-                    </div>
-                </article>
+                    </article>
+                ))}
             </div>
 
             <div className="checkoutInfo">
                 <div className="subtotalContainer">
                     <p className="checkoutP first">Zwischensumme</p>
-                    <p className="checkoutP">{`${2000.01} €`}</p>
+                    <p className="checkoutP">{formatPrice(total)}</p>
                 </div>
 
                 <div className="deliveryCostWrapper">
                     <div className="deliveryCostContainer">
                         <p className="checkoutP first">Versand</p>
-                        <p className="checkoutP">{`${4.99} €`}</p>
+                        <p className={`checkoutP ${freeDelivery && 'freeDelivery'}`}>
+                            {freeDelivery ? 'Gratis' : (!total ? formatPrice(0) : formatPrice(4.99))}
+                            </p>
                     </div>
                     
                     <p className="checkoutP deliveryHintP">Ab 100 € Bestellwert kostenloser Versand</p>
@@ -51,11 +87,12 @@ const ShoppingCart = ({ isCartActive }: Props) => {
 
                 <div className="totalContainer">
                     <p className="totalP first">Gesamtsumme</p>
-                    <p className="totalP">{`${2004.99} €`}</p>
+                    <p className="totalP">{formatPrice(total + ((freeDelivery || !total) ? 0 : 4.99))}</p>
                 </div>
             </div>
 
-            <button className="checkoutBtn">Zur Kasse gehen</button>
+            <button className={`checkoutBtn ${total && 'active'}`} 
+            onClick={() => total && showOrderMsg()}>Zur Kasse gehen</button>
         </aside>
     )
 }

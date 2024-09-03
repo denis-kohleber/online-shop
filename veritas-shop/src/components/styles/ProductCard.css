@@ -102,7 +102,6 @@
 .productName {
     font-weight: bold;
     letter-spacing: 0.5px;
-
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;

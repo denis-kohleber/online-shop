@@ -159,7 +159,6 @@ button::before, .btn::before {
 
 ::-webkit-scrollbar-thumb {
   background: var(--accentColor);
-  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

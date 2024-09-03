@@ -19,7 +19,9 @@ interface CartContextType {
     addToCart: (item: CartItem) => void;
     decreaseItem: (item:CartItem) => void;
     increaseItem: (item:CartItem) => void;
+    deleteItem: (id: number) => void;
     total: number;
+    clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -44,19 +46,26 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
             return [...prevItems, item];
       });
     };
+
+    const clearCart = () => {
+        setCartItems(() => [])
+    }
   
     const decreaseItem = (item: CartItem) => {
         setCartItems((prevItems) => prevItems.map((storedItem) =>
             storedItem.id === item.id ? 
-        {...storedItem, quantity: storedItem.quantity - 1} : storedItem ));
-
-        setCartItems((prevItems) => prevItems.filter((item) => item.quantity > 0));
+        {...storedItem, quantity: storedItem.quantity - 1} : storedItem )
+        .filter((item) => item.quantity > 0));
     };
   
     const increaseItem = (item: CartItem) => {
         setCartItems((prevItems) => prevItems.map((storedItem) =>
         storedItem.id === item.id ? 
         {...storedItem, quantity: storedItem.quantity + 1} : storedItem ));
+    };
+
+    const deleteItem = (id: number) => {
+        setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
     };
 
     // Calculate the new total, when cartItems change
@@ -69,13 +78,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         console.log(cartItems)
     }, [total]);
 
-    const value = useMemo(() => 
-        ({ cartItems, addToCart, decreaseItem, increaseItem, total }),
-        [cartItems, total]
-    );
   
     return (
-        <CartContext.Provider value={value}>
+        <CartContext.Provider value={{ clearCart, cartItems, addToCart, increaseItem, decreaseItem, deleteItem, total }}>
             {children}
         </CartContext.Provider>
     );

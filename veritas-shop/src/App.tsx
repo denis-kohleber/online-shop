@@ -15,19 +15,17 @@ function App() {
   });
 
   return (
-    <>
+    <CartProvider>
       <Header ref={ref} />
       <Navbar inView={inView} />
       <main>
         <HeroBanner />
         <Categories />
-        <CartProvider>
-          <Highlights />
-        </CartProvider>
+        <Highlights />
         <AboutUs/>
       </main>
       <Footer />
-    </>
+    </CartProvider>
   )
 }
 
