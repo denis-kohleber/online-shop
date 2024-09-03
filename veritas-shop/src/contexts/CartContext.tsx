@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 
 interface CartItem {
     id: number;
@@ -26,7 +26,6 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
-    const [total, setTotal] = useState<number>(0);
   
     const addToCart = (item: CartItem) => {
         setCartItems((prevItems) => {
@@ -60,24 +59,23 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         {...storedItem, quantity: storedItem.quantity + 1} : storedItem ));
     };
 
-    // Calculate the new total
-    useEffect(() => {
-        let sum: number = 0;
-
-        for (const item of cartItems) {
-            sum += item.price;
-        };
-
-        setTotal(() => sum);
-
-        console.log(`Warenkorb: ${cartItems} Gesamtsumme: ${sum}`)
-        console.log(cartItems)
-
+    // Calculate the new total, when cartItems change
+    const total = useMemo(() => {
+        return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
     }, [cartItems]);
+
+    useEffect(() => {
+        console.log(`Warenkorb: ${cartItems} Gesamtsumme: ${total}`)
+        console.log(cartItems)
+    }, [total]);
+
+    const value = useMemo(() => 
+        ({ cartItems, addToCart, decreaseItem, increaseItem, total }),
+        [cartItems, total]
+    );
   
     return (
-        <CartContext.Provider value=
-        {{ cartItems, addToCart, increaseItem, decreaseItem, total }}>
+        <CartContext.Provider value={value}>
             {children}
         </CartContext.Provider>
     );
