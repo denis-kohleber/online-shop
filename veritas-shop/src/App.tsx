@@ -6,6 +6,7 @@ import { HeroBanner } from "./components/HeroBanner";
 import { Categories } from "./components/Categories";
 import { AboutUs } from "./components/AboutUs";
 import { Highlights } from "./components/Highlights";
+import { CartProvider } from "./contexts/CartContext";
 
 function App() {
   const { ref, inView } = useInView({ 
@@ -20,7 +21,9 @@ function App() {
       <main>
         <HeroBanner />
         <Categories />
-        <Highlights />
+        <CartProvider>
+          <Highlights />
+        </CartProvider>
         <AboutUs/>
       </main>
       <Footer />
