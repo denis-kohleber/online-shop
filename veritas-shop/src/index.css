@@ -10,6 +10,7 @@
   --secondaryColor2: #242424;
   --secondaryColor3: #282828;
   --accentColor: #facc61;
+  --complementalColor: #5e8dbb;
   --filterYellow: brightness(0) saturate(100%) invert(84%) sepia(15%) saturate(1627%) hue-rotate(343deg) brightness(102%) contrast(96%);
   --filterBlack: brightness(0) saturate(100%) invert(10%) sepia(2%) saturate(8%) hue-rotate(314deg) brightness(100%) contrast(90%);
   --standartShadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
@@ -112,6 +113,7 @@ button, .btn {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 button::before, .btn::before {
@@ -127,6 +129,7 @@ button::before, .btn::before {
   transition: opacity .15s linear, 
   transform 0.15s linear;
   z-index: -1;
+  border-radius: 50px;
 }
 
 @media (hover: hover) {
@@ -228,19 +231,6 @@ main {
 }
 
 /* Necessary to be global */
-
-.infoHeadline::before {
-  content: 'Service Hotline';
-  z-index: 1;
-}
-
-.infoHeadline02::before {
-  content: 'Bestellung & Versand';
-}
-
-.infoHeadline03::before {
-  content: 'Informationen';
-}
 
 .learnMoreLink::before {
   z-index: 1;

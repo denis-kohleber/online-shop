@@ -88,4 +88,5 @@
 
 .sizeButton::before {
     background-color: #5e8dbb;
+    border-radius: 0;
 }

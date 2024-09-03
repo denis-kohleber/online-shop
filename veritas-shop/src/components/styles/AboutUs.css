@@ -103,15 +103,16 @@
   background-color: var(--accentColor);
   padding: 25px 30px;
   border-radius: 50px;
-  width: 160px;
+  min-width: 180px;
   text-align: center;
   font-weight: bold;
   color: var(--secondaryColor3);
   font-size: 1.2rem;
+  letter-spacing: 0.5px;
 }
 
 .learnMoreLink::before {
-  background-color: var(--secondaryColor3);
+  background-color: var(--complementalColor);
   color: var(--primaryColor);
   display: flex;
   align-items: center;

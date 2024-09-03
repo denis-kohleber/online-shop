@@ -51,7 +51,10 @@ forwardRef<SizeModalHandles, SizeModalProps>(({ setSize }, ref) => {
     return (
         <dialog ref={dialogRef} className="modalSizes" onClick={handleOutsideClick}>
             <div className="modalSizesContainer">
-                <button ref={btnRef} className="closeBtnModalSizes" autoFocus={false}
+                <button ref={btnRef} 
+                className="closeBtnModalSizes" 
+                aria-label="Suchleiste anzeigen" 
+                autoFocus={false}
                 onClick={() => dialogRef.current?.close()}>
                     <img src={closeIcon} alt="Close Button" loading="lazy" />
                 </button>

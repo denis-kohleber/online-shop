@@ -104,7 +104,7 @@ filter: var(--filterYellow);
   }
 }
 
-.shoppingCartWindow, .searchWindow {
+.searchWindow {
   background-color: #af3c3c;
   width: 240px;
   display: flex;
@@ -115,7 +115,7 @@ filter: var(--filterYellow);
   height: calc(100vh - 15px);
   top: 0;
   right: 0;
-  padding-top: 70px;
+  padding-top: 55px;
   gap: 0;
   transform: translateX(250px);
   transition: transform 0.4s;
@@ -127,7 +127,7 @@ filter: var(--filterYellow);
   background-color: rgb(112, 112, 172);
 }
 
-.shoppingCartWindow.active, .searchWindow.active {
+.searchWindow.active {
   transform: translateX(0);
 }
 

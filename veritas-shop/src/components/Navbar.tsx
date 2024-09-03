@@ -6,6 +6,7 @@ import searchIcon01 from "../assets/regular-icons/magnify.svg";
 import searchIcon02 from "../assets/regular-icons/magnify02.svg";
 import cartIcon from "../assets/regular-icons/cart.svg";
 import "./styles/Navbar.css"
+import { ShoppingCart } from './ShoppingCart';
 
 interface Props {
     inView: boolean;
@@ -112,10 +113,12 @@ function Navbar({ inView }: Props) {
 
   // Prevent the scrolling, when a menu is open
   useEffect(() => {
-    if (isMenuActive || isCartActive || isSearchActive ) {
-      document.body.classList.add('overflowHidden');
-    } else {
-      document.body.classList.remove('overflowHidden');
+    if (windowWidth < 1000) {
+      if (isMenuActive || isCartActive || isSearchActive ) {
+        document.body.classList.add('overflowHidden');
+      } else {
+        document.body.classList.remove('overflowHidden');
+      }
     }
 
     // Cleanup
@@ -154,15 +157,15 @@ function Navbar({ inView }: Props) {
       </div>
         
       <div className='navBtnContainer'>
-        <button className="navBtn navBtnCart" onClick={showCart}>
+        <button className="navBtn navBtnCart" onClick={showCart} aria-label="Warenkorb anzeigen">
           <img className="navIcon" src={cartIcon} alt="cart-button" />
           </button>
-        <button className="navBtn navBtnSearch" onClick={showSearch}>
+        <button className="navBtn navBtnSearch" onClick={showSearch} aria-label="Suchleiste anzeigen">
           <img className="navIcon" src={searchIcon01} alt="search-button" />
         </button>
       </div>
-          
-      <div className={`shoppingCartWindow ${isCartActive ? 'active' : ''}`}></div>
+
+      <ShoppingCart isCartActive={isCartActive} />    
       <div className={`searchWindow ${isSearchActive ? 'active' : ''}`}></div>
       <div className={`dark-bg ${isMenuActive || isCartActive || isSearchActive ? 'active' : ''}`} onClick={removeMenus}></div>
     </nav>

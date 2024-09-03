@@ -112,6 +112,7 @@ footer {
 
 .newsletterSubmitBtn::before {
   background-color: var(--primaryColor);
+  border-radius: 0 24px 24px 0px;
 }
 
 .welcome {
@@ -257,25 +258,11 @@ footer {
   width: 240px;
   border-radius: 40px;
   position: relative;
-  border: 2px solid var(--secondaryColor);
+  
 }
 
 .infoHeadline::before {
-  background-color: var(--primaryColor);
-  color: var(--secondaryColor);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  content: 'Service Hotline';
-  z-index: 1;
-}
-
-.infoHeadline02::before {
-  content: 'Bestellung & Versand';
-}
-
-.infoHeadline03::before {
-  content: 'Informationen';
+  background-color: var(--complementalColor);
 }
 
 .infoList {

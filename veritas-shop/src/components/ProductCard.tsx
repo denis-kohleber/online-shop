@@ -68,7 +68,7 @@ const ProductCard = ({id, title, price, description, type, imageFront,
                         <img className={`placeholderProductImg ${isLoaded ? "" : "notLoaded"}`} 
                             aria-hidden={isLoaded ? true : false}
                             src={getPlaceholderImageURL(imageFront)} 
-                            alt="Produktbild" >
+                            alt={title} >
                         </img>
 
                         <AnimatePresence mode="wait">
