@@ -1,17 +1,17 @@
 import "./styles/ShoppingCart.css";
-import deleteIcon from "../assets/regular-icons/delete.svg"
+import deleteIcon from "../assets/regular-icons/delete.svg";
 import { useCart } from "../contexts/CartContext";
 import { getImageURL } from "../utils/image-util";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
     isCartActive: boolean;
-}
+};
 
 const ShoppingCart = ({ isCartActive }: Props) => {
     const { clearCart, cartItems, decreaseItem, 
         increaseItem, total, deleteItem } = useCart();
-    const [ freeDelivery, setFreeDelivery ] = useState<boolean>(false)
+    const [ freeDelivery, setFreeDelivery ] = useState<boolean>(false);
 
     useEffect(() => {
         if (total < 100) return setFreeDelivery(() => false);
@@ -20,20 +20,31 @@ const ShoppingCart = ({ isCartActive }: Props) => {
     
     const formatPrice = (price: number) => {
         return price.toFixed(2).replace('.', ',') + ' €';
-    }
+    };
 
     const showOrderMsg = () => {
         alert('Vielen Dank! Ihre Bestellung war erfolgreich ... ^^');
         clearCart();
-    }
+    };
+
+    // Function that holds the Tab-Navigation in the Cart
+    const headlineRef = useRef<HTMLHeadingElement>(null);
+
+    const handleBlurLastLink = 
+    (e: React.KeyboardEvent<HTMLButtonElement>) => {  
+      if (e.key === 'Tab' && !e.shiftKey) {
+          e.preventDefault();
+          if (headlineRef.current) headlineRef.current.focus();
+      };
+    };
 
     return (
         <aside className={`shoppingCartWindow ${isCartActive ? 'active' : ''}`}>
-            <h2 className="shopCartH">{`Warenkorb (${cartItems.reduce((sum, item) => sum + item.quantity, 0)})`}</h2>
+            <h2 className="shopCartH" tabIndex={0} ref={headlineRef}>{`Warenkorb (${cartItems.reduce((sum, item) => sum + item.quantity, 0)})`}</h2>
 
             <div className="shopCartProductsContainer">
                 {cartItems.map((item) => (
-                    <article className="cartProduct" key={item.id}>
+                    <article className="cartProduct" key={item.id + item.size}>
                         <img className="cartImg" src={getImageURL(item.imageFront)} alt={item.title} />
 
                         <div className="cartProductContainer">
@@ -58,7 +69,7 @@ const ShoppingCart = ({ isCartActive }: Props) => {
                                 </div>
                                 
                                 <button className="deleteBtn" 
-                                onClick={() => deleteItem(item.id)}  
+                                onClick={() => deleteItem(item.id, item.size)}  
                                 aria-label="Artikel entfernen">
                                     <img src={deleteIcon} alt="" />
                                 </button>
@@ -92,9 +103,9 @@ const ShoppingCart = ({ isCartActive }: Props) => {
             </div>
 
             <button className={`checkoutBtn ${total && 'active'}`} 
-            onClick={() => total && showOrderMsg()}>Zur Kasse gehen</button>
+            onClick={() => total && showOrderMsg()} onKeyDown={(e) => handleBlurLastLink(e)}>Zur Kasse gehen</button>
         </aside>
     )
-}
+};
 
-export { ShoppingCart }
+export { ShoppingCart };

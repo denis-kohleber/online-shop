@@ -19,7 +19,7 @@ interface CartContextType {
     addToCart: (item: CartItem) => void;
     decreaseItem: (item:CartItem) => void;
     increaseItem: (item:CartItem) => void;
-    deleteItem: (id: number) => void;
+    deleteItem: (id: number, size: number) => void;
     total: number;
     clearCart: () => void;
 };
@@ -33,7 +33,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         setCartItems((prevItems) => {
             // If the Article already existing than add it to the quantity
             const existingItem = 
-            prevItems.find((storedItem) => storedItem.id === item.id);
+            prevItems.find((storedItem) => 
+                storedItem.id === item.id && storedItem.size === item.size);
 
             if (existingItem) {
                 return prevItems.map((storedItem) => 
@@ -53,19 +54,20 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   
     const decreaseItem = (item: CartItem) => {
         setCartItems((prevItems) => prevItems.map((storedItem) =>
-            storedItem.id === item.id ? 
+            storedItem.id === item.id && storedItem.size === item.size ? 
         {...storedItem, quantity: storedItem.quantity - 1} : storedItem )
         .filter((item) => item.quantity > 0));
     };
   
     const increaseItem = (item: CartItem) => {
         setCartItems((prevItems) => prevItems.map((storedItem) =>
-        storedItem.id === item.id ? 
+            storedItem.id === item.id && storedItem.size === item.size ? 
         {...storedItem, quantity: storedItem.quantity + 1} : storedItem ));
     };
 
-    const deleteItem = (id: number) => {
-        setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    const deleteItem = (id: number, size: number) => {
+        setCartItems((prevItems) => prevItems.filter((item) => 
+            !(item.id === id && item.size === size)));
     };
 
     // Calculate the new total, when cartItems change
@@ -77,7 +79,6 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         console.log(`Warenkorb: ${cartItems} Gesamtsumme: ${total}`)
         console.log(cartItems)
     }, [total]);
-
   
     return (
         <CartContext.Provider value={{ clearCart, cartItems, addToCart, increaseItem, decreaseItem, deleteItem, total }}>

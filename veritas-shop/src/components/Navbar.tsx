@@ -7,7 +7,6 @@ import searchIcon02 from "../assets/regular-icons/magnify02.svg";
 import cartIcon from "../assets/regular-icons/cart.svg";
 import "./styles/Navbar.css"
 import { ShoppingCart } from './ShoppingCart';
-import { CartProvider } from '../contexts/CartContext';
 
 interface Props {
     inView: boolean;
