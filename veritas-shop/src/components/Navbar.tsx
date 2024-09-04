@@ -167,7 +167,7 @@ function Navbar({ inView }: Props) {
       </div>
 
       <ShoppingCart isCartActive={isCartActive} /> 
-      <SearchMenu isSearchActive={isSearchActive} />    
+      <SearchMenu isSearchActive={isSearchActive} removeMenus={removeMenus} />    
       <div className={`dark-bg ${isMenuActive || isCartActive || isSearchActive ? 'active' : ''}`} onClick={removeMenus}></div>
     </nav>
   );

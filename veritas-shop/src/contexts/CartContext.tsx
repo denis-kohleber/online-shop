@@ -49,8 +49,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     };
 
     const clearCart = () => {
-        setCartItems(() => [])
-    }
+        setCartItems(() => []);
+    };
   
     const decreaseItem = (item: CartItem) => {
         setCartItems((prevItems) => prevItems.map((storedItem) =>
@@ -74,11 +74,6 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     const total = useMemo(() => {
         return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
     }, [cartItems]);
-
-    useEffect(() => {
-        console.log(`Warenkorb: ${cartItems} Gesamtsumme: ${total}`)
-        console.log(cartItems)
-    }, [total]);
   
     return (
         <CartContext.Provider value={{ clearCart, cartItems, addToCart, increaseItem, decreaseItem, deleteItem, total }}>

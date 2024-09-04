@@ -2,7 +2,7 @@ import "./styles/ShoppingCart.css";
 import deleteIcon from "../assets/regular-icons/delete.svg";
 import { useCart } from "../contexts/CartContext";
 import { getImageURL } from "../utils/image-util";
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
     isCartActive: boolean;

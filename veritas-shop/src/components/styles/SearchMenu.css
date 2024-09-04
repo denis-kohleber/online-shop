@@ -127,6 +127,14 @@
     letter-spacing: 0;
 }
 
-.cartImg {
+.searchImg {
     width: 60px;
+    border-radius: 5px;
+}
+
+.noResults {
+    color: #949494;
+    font-style: italic;
+    margin: auto;
+    margin-top: 100px;
 }
