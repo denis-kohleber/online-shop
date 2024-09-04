@@ -1,0 +1,132 @@
+.searchWindow {
+    background-color: var(--primaryColor);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    align-items: start;
+    height: calc(100vh - 54px);
+    top: 0;
+    right: 0;
+    padding-top: 55px;
+    gap: 0;
+    transform: translateX(410px);
+    transition: transform 0.4s;
+    overflow: auto;
+    z-index: 2;
+}
+
+.searchWindow.active {
+    transform: translateX(0);
+}
+
+.searchHeader {
+    display: flex;
+    padding: 15px 20px;
+    width: calc(100% - 40px);
+    gap: 10px;
+}
+
+.closeSearchBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(80%) sepia(9%) saturate(17%) hue-rotate(337deg) brightness(81%) contrast(75%);
+}
+
+.closeSearchBtn:hover, .closeSearchBtn:focus {
+    filter: var(--filterYellow);
+}
+
+.searchInputContainer {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    border-radius: 50px;
+    border: 1px solid #9f9f9f;
+    padding-left: 15px;
+    overflow: hidden;
+}
+
+.searchInputContainer.focus,
+.searchInputContainer.focus > * {
+    border-color: #383838;
+}
+
+.searchInput {
+    flex: 1;
+    border: none;
+    margin: 12px 0;
+    font-size: 1rem;
+    min-width: 0;
+}
+
+.searchMenuSearchBtn {
+    background-color: var(--accentColor);
+    border: none;
+    border-left: 1px solid #9f9f9f;
+    height: 100%;
+    padding: 0 14px 0px 12px;
+    cursor: pointer;
+}
+
+.searchMenuSearchBtn::before {
+    background-color: var(--complementalColor);
+    border-radius: 0;
+}
+
+.searchResultsContainer {
+    display: flex;
+    flex-flow: column; 
+    margin-top: 7.5px;
+    max-width: 100%; 
+    width: 100%;
+}
+
+.searchResultLink.btn::before {
+    background-color: var(--accentColor);
+    border-radius: 0;
+}
+
+.searchResult {
+    display: flex;
+    gap: 15px;
+    padding: 10px 20px;
+    max-width: calc(100% - 40px);
+    color: var(--secondaryColor);
+    letter-spacing: 0.5px;
+}
+
+.searchProductContainer {
+    overflow: hidden;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+}
+
+.searchProductName {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.searchProductType {
+    font-size: 1rem;
+    margin-top: 1px;
+}
+
+.searchProductPrice {
+    flex: 1;
+    display: flex;
+    align-items: end;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.cartImg {
+    width: 60px;
+}

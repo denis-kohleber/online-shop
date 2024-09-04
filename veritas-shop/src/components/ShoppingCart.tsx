@@ -2,13 +2,13 @@ import "./styles/ShoppingCart.css";
 import deleteIcon from "../assets/regular-icons/delete.svg";
 import { useCart } from "../contexts/CartContext";
 import { getImageURL } from "../utils/image-util";
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 
 interface Props {
     isCartActive: boolean;
 };
 
-const ShoppingCart = ({ isCartActive }: Props) => {
+const ShoppingCart = ({ isCartActive } : Props) => {
     const { clearCart, cartItems, decreaseItem, 
         increaseItem, total, deleteItem } = useCart();
     const [ freeDelivery, setFreeDelivery ] = useState<boolean>(false);
@@ -28,21 +28,18 @@ const ShoppingCart = ({ isCartActive }: Props) => {
     };
 
     // Function that holds the Tab-Navigation in the Cart
-    const headlineRef = useRef<HTMLHeadingElement>(null);
-
-    const handleBlurLastLink = 
-    (e: React.KeyboardEvent<HTMLButtonElement>) => {  
-      if (e.key === 'Tab' && !e.shiftKey) {
-          e.preventDefault();
-          if (headlineRef.current) headlineRef.current.focus();
-      };
+    const handleBlurLastLink = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+        if (e.key === 'Tab' && !e.shiftKey) {
+            e.preventDefault();
+            document.getElementById('navBtnCart')?.focus();
+        };
     };
 
     return (
         <aside className={`shoppingCartWindow ${isCartActive ? 'active' : ''}`}>
-            <h2 className="shopCartH" tabIndex={0} ref={headlineRef}>{`Warenkorb (${cartItems.reduce((sum, item) => sum + item.quantity, 0)})`}</h2>
+            <h2 className="shopCartH" >{`Warenkorb (${cartItems.reduce((sum, item) => sum + item.quantity, 0)})`}</h2>
 
-            <div className="shopCartProductsContainer">
+            <section className="shopCartProductsContainer" aria-label="Warenkorb-Produktübersicht">
                 {cartItems.map((item) => (
                     <article className="cartProduct" key={item.id + item.size}>
                         <img className="cartImg" src={getImageURL(item.imageFront)} alt={item.title} />
@@ -59,16 +56,17 @@ const ShoppingCart = ({ isCartActive }: Props) => {
 
                             <div className="cartProductBtnContainer">
                                 <div className="cartAmountContainer">
-                                    <button className="cartMinusBtn" onClick={() => decreaseItem(item)} 
+                                    <button tabIndex={isCartActive ? 0 : -1} className="cartMinusBtn" onClick={() => decreaseItem(item)} 
                                     aria-label="Einen Artikel entfernen">-</button>
 
                                     <p className="cartAmountDisplay" aria-label="Artikel Anzahl">{item.quantity}</p>
 
-                                    <button className="cartPlusBtn" onClick={() => increaseItem(item)}  
+                                    <button tabIndex={isCartActive ? 0 : -1} className="cartPlusBtn" onClick={() => increaseItem(item)}  
                                     aria-label="Einen weiteren Artikel hinzufügen">+</button>
                                 </div>
                                 
                                 <button className="deleteBtn" 
+                                tabIndex={isCartActive ? 0 : -1}
                                 onClick={() => deleteItem(item.id, item.size)}  
                                 aria-label="Artikel entfernen">
                                     <img src={deleteIcon} alt="" />
@@ -77,9 +75,9 @@ const ShoppingCart = ({ isCartActive }: Props) => {
                         </div>
                     </article>
                 ))}
-            </div>
+            </section>
 
-            <div className="checkoutInfo">
+            <section className="checkoutInfo" aria-label="Kassenübersicht">
                 <div className="subtotalContainer">
                     <p className="checkoutP first">Zwischensumme</p>
                     <p className="checkoutP">{formatPrice(total)}</p>
@@ -100,9 +98,9 @@ const ShoppingCart = ({ isCartActive }: Props) => {
                     <p className="totalP first">Gesamtsumme</p>
                     <p className="totalP">{formatPrice(total + ((freeDelivery || !total) ? 0 : 4.99))}</p>
                 </div>
-            </div>
+            </section>
 
-            <button className={`checkoutBtn ${total && 'active'}`} 
+            <button className={`checkoutBtn ${total && 'active'}`} tabIndex={isCartActive ? 0 : -1}
             onClick={() => total && showOrderMsg()} onKeyDown={(e) => handleBlurLastLink(e)}>Zur Kasse gehen</button>
         </aside>
     )

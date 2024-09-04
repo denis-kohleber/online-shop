@@ -104,33 +104,6 @@ filter: var(--filterYellow);
   }
 }
 
-.searchWindow {
-  background-color: #af3c3c;
-  width: 240px;
-  display: flex;
-  flex-flow: column;
-  position: absolute;
-  align-items: start;
-  /* 100vh - padding 15px */
-  height: calc(100vh - 15px);
-  top: 0;
-  right: 0;
-  padding-top: 55px;
-  gap: 0;
-  transform: translateX(250px);
-  transition: transform 0.4s;
-  overflow: auto;
-  z-index: 2;
-}
-
-.searchWindow {
-  background-color: rgb(112, 112, 172);
-}
-
-.searchWindow.active {
-  transform: translateX(0);
-}
-
 .dark-bg {
   opacity: 0;
   z-index: -1;

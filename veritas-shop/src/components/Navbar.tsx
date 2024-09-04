@@ -7,6 +7,7 @@ import searchIcon02 from "../assets/regular-icons/magnify02.svg";
 import cartIcon from "../assets/regular-icons/cart.svg";
 import "./styles/Navbar.css"
 import { ShoppingCart } from './ShoppingCart';
+import { SearchMenu } from './SearchMenu';
 
 interface Props {
     inView: boolean;
@@ -157,17 +158,16 @@ function Navbar({ inView }: Props) {
       </div>
         
       <div className='navBtnContainer'>
-        <button className="navBtn navBtnCart" onClick={showCart} aria-label="Warenkorb anzeigen">
+        <button className="navBtn navBtnCart" id='navBtnCart' onClick={showCart} aria-label="Warenkorb anzeigen/schließen">
           <img className="navIcon" src={cartIcon} alt="cart-button" />
           </button>
-        <button className="navBtn navBtnSearch" onClick={showSearch} aria-label="Suchleiste anzeigen">
+        <button className="navBtn navBtnSearch" id='navBtnSearch' onClick={showSearch} aria-label="Suchleiste anzeigen/schließen">
           <img className="navIcon" src={searchIcon01} alt="search-button" />
         </button>
       </div>
 
-      <ShoppingCart isCartActive={isCartActive} />    
-     
-      <div className={`searchWindow ${isSearchActive ? 'active' : ''}`}></div>
+      <ShoppingCart isCartActive={isCartActive} /> 
+      <SearchMenu isSearchActive={isSearchActive} />    
       <div className={`dark-bg ${isMenuActive || isCartActive || isSearchActive ? 'active' : ''}`} onClick={removeMenus}></div>
     </nav>
   );
