@@ -1,0 +1,283 @@
+/* || NAVIGATION-BAR */
+
+.nav {
+    background-color: var(--secondaryColor);
+    position: sticky;
+    height: 55px;
+    top: 0px;
+    z-index: 10;
+    box-shadow: var(--standartShadow);
+}
+
+.navWrapper {
+    background-color: var(--secondaryColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -1px;
+    padding-top: 1px;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.navLogoContainer {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    z-index: 12;
+}
+
+.navLogo {
+    height: 42px;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+    animation: hideInitialAnimation 0.1s linear;
+}
+
+@keyframes hideInitialAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.navLogo.active {
+    opacity: 1;
+}
+
+.navLogoContainer:focus > .navLogo,
+.navLogoContainer:hover > .navLogo {
+    opacity: 1;
+    filter: var(--filterYellow);
+}
+
+.searchIconMenu {
+    height: 16px;
+    transform: scale(1.4);
+}
+
+.navBtnContainer {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 12;
+}
+
+.navBtn {
+    background-color: var(--secondaryColor);
+    border: none;
+    padding: 0;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.navBtn:hover > *,
+.navBtn:focus > * {
+    filter: var(--filterYellow);
+}
+
+.navIcon {
+    width: 33px;
+}
+
+.navBtnBurger {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width: 800px) {
+    .navLogoContainer {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .navBtnBurger {
+        display: inline-block;
+    }
+}
+
+.dark-bg {
+    opacity: 0;
+    z-index: -1;
+}
+
+.dark-bg.active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000030;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+/* || NAVIGATION-BAR - NavLinks / NavMenu */
+
+.navLinkContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 12;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.navLink {
+    text-decoration: none;
+    color: var(--primaryColor);
+    font-weight: bold;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    min-width: 80px;
+}
+
+.navLink:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 6px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accentColor);
+    transform-origin: bottom center;
+    transition: transform 0.25s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accentColor);
+}
+
+.navLink:hover:after,
+.navLink:focus:after {
+    transform: scaleX(1);
+}
+
+.navLink:hover,
+.navLink:focus {
+    color: var(--accentColor);
+}
+
+.navLinkSearch {
+    background-color: var(--accentColor);
+    border: none;
+    font-size: 1rem;
+    display: none;
+    align-items: start;
+    gap: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .navLink:after {
+        background-color: var(--secondaryColor);
+        color: var(--secondaryColor);
+    }
+
+    .navLink:focus,
+    .navLink:hover {
+        color: var(--secondaryColor);
+    }
+
+    .navLink:hover {
+        color: var(--secondaryColor);
+    }
+
+    .navLinkContainer {
+        display: flex;
+        flex-flow: column;
+        position: absolute;
+        align-items: start;
+        height: calc(100vh - 15px);
+        top: 0;
+        left: 0;
+        padding-top: 70px;
+        gap: 0;
+        background-color: var(--accentColor);
+        transform: translateX(-250px);
+        transition: transform 0.4s;
+        z-index: 2;
+    }
+
+    .navLink {
+        color: var(--secondaryColor);
+        padding: 15px 15px 15px 25px;
+        width: 200px;
+        height: auto;
+        justify-content: start;
+    }
+
+    .navLinkContainer.active {
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .navLinkSearch {
+        display: flex;
+    }
+    .navBtnSearch {
+        display: none;
+    }
+}
+
+/* || NAVIGATION-BAR - Hamburger Button */
+
+.ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transform: scale(1.6);
+}
+.hamRotate.active {
+    transform: rotate(45deg) scale(1.6);
+}
+.hamRotate180.active {
+    transform: rotate(180deg);
+}
+.line {
+    fill: none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: #ffffff;
+    stroke-width: 5.5;
+    stroke-linecap: round;
+}
+.ham .top {
+    stroke-dasharray: 40 82;
+}
+.ham .middle {
+    stroke-dasharray: 40 111;
+}
+.ham .bottom {
+    stroke-dasharray: 40 161;
+}
+.ham.active .top {
+    stroke-dasharray: 17 82;
+    stroke-dashoffset: -62px;
+}
+.ham.active .middle {
+    stroke-dashoffset: 23px;
+}
+.ham.active .bottom {
+    stroke-dashoffset: -83px;
+}

@@ -23,7 +23,7 @@
 .highlightsH2 {
     margin-bottom: 15px;
     font-size: 3.5rem;
-    font-family: 'RobotoSlab', sans-serif;
+    font-family: "RobotoSlab", sans-serif;
     font-weight: bold;
     letter-spacing: 5px;
     text-align: center;
@@ -31,7 +31,7 @@
 
 .highlightsH3 {
     font-size: 2rem;
-    font-family: 'RobotoSlab', sans-serif;
+    font-family: "RobotoSlab", sans-serif;
     font-weight: 500;
     letter-spacing: 2.5px;
     text-align: center;
@@ -71,8 +71,8 @@
 .embla.hl {
     position: relative;
     max-width: 85vw;
-  }
-  
+}
+
 .embla__container.hl {
     display: flex;
 }
@@ -108,25 +108,26 @@
 .prevBtn.hl {
     left: -80px;
 }
-  
+
 .nextBtn.hl {
     right: -80px;
 }
 
 .carouselBtnImg {
     opacity: 0.5;
-    transition: opacity 0.3s linear,
-    transform 0.3s linear;
+    transition: opacity 0.3s linear, transform 0.3s linear;
     filter: var(--filterBlack);
     cursor: pointer;
 }
-  
-.carouselBtnImg:hover, .carouselBtn.hl:focus > .carouselBtnImg {
+
+.carouselBtnImg:hover,
+.carouselBtn.hl:focus > .carouselBtnImg {
     opacity: 1;
     transform: translateX(-10px);
 }
 
-.carouselBtnImg02:hover, .carouselBtn.hl:focus > .carouselBtnImg02 {
+.carouselBtnImg02:hover,
+.carouselBtn.hl:focus > .carouselBtnImg02 {
     transform: translateX(+10px);
 }
 
@@ -170,4 +171,3 @@
         gap: 10px;
     }
 }
-

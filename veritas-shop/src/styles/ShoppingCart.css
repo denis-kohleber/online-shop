@@ -37,7 +37,7 @@
     padding: 20px;
     padding-top: 0;
     width: calc(100% - 40px);
-    
+
     display: flex;
     flex-flow: column;
     gap: 10px;
@@ -54,12 +54,15 @@
     margin-top: auto;
 }
 
-.subtotalContainer, .deliveryCostContainer, .totalContainer {
+.subtotalContainer,
+.deliveryCostContainer,
+.totalContainer {
     display: flex;
     justify-content: space-between;
 }
 
-.checkoutP.first, .totalP.first {
+.checkoutP.first,
+.totalP.first {
     letter-spacing: 0.5px;
 }
 
@@ -173,14 +176,17 @@
 .cartAmountDisplay {
     border-left: 1px solid var(--primaryColor3);
     border-right: 1px solid var(--primaryColor3);
+    color: #2f649d;
 }
 
-.cartMinusBtn, .cartPlusBtn {
+.cartMinusBtn,
+.cartPlusBtn {
     cursor: pointer;
     background-color: #f3f3f3;
 }
 
-.cartMinusBtn::before, .cartPlusBtn::before {
+.cartMinusBtn::before,
+.cartPlusBtn::before {
     background-color: var(--accentColor);
     border-radius: 0;
 }
@@ -202,9 +208,8 @@
     cursor: pointer;
 }
 
-.deleteBtn:hover, .deleteBtn:focus {
-    filter: brightness(0) saturate(100%) invert(40%) sepia(72%) saturate(600%) hue-rotate(313deg) brightness(98%) contrast(74%);
+.deleteBtn:hover,
+.deleteBtn:focus {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(72%) saturate(600%)
+        hue-rotate(313deg) brightness(98%) contrast(74%);
 }
-
-
-

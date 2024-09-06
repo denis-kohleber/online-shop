@@ -1,17 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './fonts.css'
-import './index.css'
-import { BrowserRouter } from 'react-router-dom'
-import { preloadImageLinks } from './utils/preloadImages.ts'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import "./styles/fonts.css";
+import "./styles/index.css";
+import { BrowserRouter } from "react-router-dom";
+import { ScrollToTop } from "./components/ScrollToTop.tsx";
 
-preloadImageLinks();
-
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
-)
+createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+        <BrowserRouter>
+            <App />
+            <ScrollToTop />
+        </BrowserRouter>
+    </StrictMode>
+);

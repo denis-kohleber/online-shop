@@ -1,0 +1,154 @@
+/* || SECTION - ABOUT US */
+
+.aboutUs {
+    padding: var(--contentSpace) 7vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 14vw);
+    max-width: 1200px;
+    margin: auto;
+    gap: min(10vh, 80px) 50px;
+}
+
+.aboutUsImgContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: end;
+    width: 50%;
+}
+
+.aboutUsImgWrapper {
+    border-radius: 24px;
+    box-shadow: var(--standartShadow);
+    transform: scale(1);
+    transition: transform 0.2s linear;
+}
+
+.aboutUsImgWrapper:hover {
+    transform: scale(1.15);
+}
+
+.aboutUsImg01Container {
+    margin-bottom: -20%;
+    z-index: 2;
+    max-width: 300px;
+    width: 45%;
+}
+
+.aboutUsImg02Container {
+    max-width: 400px;
+    width: 80%;
+    z-index: 1;
+}
+
+.aboutUsImg03Container {
+    margin-top: -15%;
+    max-width: 300px;
+    width: 60%;
+}
+
+.aboutUsImg02Wrapper {
+    width: 100%;
+    display: flex;
+}
+
+@media screen and (max-width: 950px) {
+    .aboutUs {
+        flex-flow: column-reverse;
+    }
+    .aboutUsImgContainer {
+        display: flex;
+        flex-flow: column;
+        align-items: end;
+        width: 80%;
+    }
+    .aboutUsImg01Container {
+        display: none;
+    }
+    .aboutUsImg02Container {
+        max-width: 600px;
+        width: 80%;
+    }
+    .aboutUsImg03Container {
+        max-width: 500px;
+        width: 70%;
+    }
+}
+
+.aboutUsContentContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    min-width: 430px;
+    width: 50%;
+}
+
+.aboutUsH {
+    font-family: "RedRose", sans-serif;
+    text-align: center;
+    font-size: 4rem;
+}
+
+.aboutUsP {
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    letter-spacing: 2.5px;
+}
+
+.learnMoreLink {
+    background-color: var(--accentColor);
+    padding: 25px 30px;
+    border-radius: 50px;
+    min-width: 180px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--secondaryColor3);
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.learnMoreLink::before {
+    background-color: var(--complementalColor);
+    color: var(--primaryColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 510px) {
+    .aboutUsContentContainer {
+        width: 100%;
+        min-width: 0;
+    }
+    .aboutUsH {
+        font-size: 3rem;
+    }
+
+    .aboutUsP {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .aboutUsContentContainer {
+        width: 100%;
+        min-width: 0;
+    }
+    .aboutUsH {
+        font-size: 2.5rem;
+    }
+    .aboutUsP {
+        font-size: 1rem;
+    }
+    .learnMoreLink {
+        background-color: var(--accentColor);
+        padding: 20px;
+        border-radius: 50px;
+        width: 140px;
+        font-size: 1rem;
+    }
+}

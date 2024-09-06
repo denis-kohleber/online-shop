@@ -2,33 +2,32 @@
     border-radius: 24px;
     border: none;
     cursor: default;
-    transition: display 0.3s allow-discrete, 
-    overlay 0.3s allow-discrete;
+    transition: display 0.3s allow-discrete, overlay 0.3s allow-discrete;
     animation: close 0.5s forwards;
     &[open] {
-      animation: open 0.5s forwards;
+        animation: open 0.5s forwards;
     }
 }
-  
+
 @keyframes open {
     from {
-    opacity: 0;
-    transform: translateY(-50px);
+        opacity: 0;
+        transform: translateY(-50px);
     }
     to {
-    opacity: 1;
-    transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 @keyframes close {
     from {
-    opacity: 1;
-    transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
     to {
-    opacity: 0;
-    transform: translateY(-50px);
+        opacity: 0;
+        transform: translateY(-50px);
     }
 }
 
@@ -56,7 +55,8 @@
     width: 30px;
 }
 
-.closeBtnModalSizes:hover > img, .closeBtnModalSizes:focus > img {
+.closeBtnModalSizes:hover > img,
+.closeBtnModalSizes:focus > img {
     filter: var(--filterYellow);
 }
 

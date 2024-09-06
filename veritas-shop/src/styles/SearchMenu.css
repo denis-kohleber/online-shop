@@ -32,10 +32,12 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    filter: brightness(0) saturate(100%) invert(80%) sepia(9%) saturate(17%) hue-rotate(337deg) brightness(81%) contrast(75%);
+    filter: brightness(0) saturate(100%) invert(80%) sepia(9%) saturate(17%)
+        hue-rotate(337deg) brightness(81%) contrast(75%);
 }
 
-.closeSearchBtn:hover, .closeSearchBtn:focus {
+.closeSearchBtn:hover,
+.closeSearchBtn:focus {
     filter: var(--filterYellow);
 }
 
@@ -78,9 +80,9 @@
 
 .searchResultsContainer {
     display: flex;
-    flex-flow: column; 
+    flex-flow: column;
     margin-top: 7.5px;
-    max-width: 100%; 
+    max-width: 100%;
     width: 100%;
 }
 

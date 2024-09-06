@@ -15,7 +15,7 @@
     font-size: 128px;
     font-weight: bold;
     letter-spacing: 10px;
-    color: #facc61d0;
+    color: var(--accentColor);
 }
 
 .p404H2 {
@@ -24,7 +24,7 @@
 }
 
 .p404Text {
-    font-size: 1.4rem
+    font-size: 1.4rem;
 }
 
 .p404BtnContainer {
@@ -45,6 +45,7 @@
     font-weight: bold;
     max-width: 300px;
     width: 100%;
+    background-color: transparent;
 }
 
 .p404Link {
@@ -53,6 +54,19 @@
 }
 
 .p404Btn::before {
-    background-color: var(--complementalColor);
+    background-color: var(--accentColor);
     border-radius: 0;
+    color: var(--secondaryColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.p404ReturnBtn::before {
+    content: "Zurück zur vorherigen Seite";
+}
+
+.p404HomeBtn::before {
+    content: "Zur Startseite";
 }
