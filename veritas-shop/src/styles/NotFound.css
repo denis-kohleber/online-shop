@@ -1,0 +1,58 @@
+.p404 {
+    padding: var(--contentSpace) 7vw var(--contentSpace);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    width: calc(100% - 14vw);
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.p404H1 {
+    font-size: 128px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    color: #facc61d0;
+}
+
+.p404H2 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.p404Text {
+    font-size: 1.4rem
+}
+
+.p404BtnContainer {
+    display: flex;
+    flex-flow: wrap;
+    display: center;
+    align-items: center;
+    justify-content: center;
+    gap: 20px 40px;
+}
+
+.p404Btn {
+    border-radius: 10px;
+    border: 4px solid var(--accentColor);
+    padding: 20px 0;
+    font-size: 1.1rem;
+    color: var(--accentColor);
+    font-weight: bold;
+    max-width: 300px;
+    width: 100%;
+}
+
+.p404Link {
+    max-width: 300px;
+    width: 100%;
+}
+
+.p404Btn::before {
+    background-color: var(--complementalColor);
+    border-radius: 0;
+}
