@@ -15,7 +15,7 @@ interface Product {
 // Check if the URL has a valid product category
 const checkCategoryUrl = (category: string, shoeData: Product[]) => {
     return shoeData.some(
-        (item) => item.category === category || category === 'all-products'
+        (item) => item.category === category
     );
 };
 

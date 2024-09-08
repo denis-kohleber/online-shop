@@ -1,0 +1,79 @@
+.cPage_introduction {
+    display: flex;
+}
+
+.cPage_introductionLeftSide {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    flex-flow: center;
+    max-width: 500px;
+    padding: 80px 100px;
+    background-color: var(--primaryColor2);
+    font-family: 'RedRose';
+    text-align: center;
+    letter-spacing: 1.5px;
+    
+}
+
+.cPage_headline {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cPage_description {
+    line-height: 1.5;
+    word-spacing: 2px;
+}
+
+.cPage_hero {
+    width: 100%;
+    min-width: 600px;
+    max-height: 500px;
+}
+
+.cPage_hero > * {
+    object-fit: cover;
+    object-position: center;
+}
+
+.cPage_heroPlaceholder {
+    width: 2000px !important;
+    height: 100%;
+}
+
+@media screen and (max-width: 1100px) {
+    .cPage_hero {
+        min-width: 400px;
+    }
+    .cPage_introductionLeftSide {
+        padding: 60px 50px;
+        max-width: none;
+    }
+}
+
+.cPage_itemDisplay {
+    height: 100vw;
+}
+
+@media screen and (max-width: 800px) {
+    .cPage_introduction {
+        flex-flow: column-reverse;
+    }
+    .cPage_hero {
+        min-height: 350px;
+        min-width: 0;
+    }
+    .cPage_hero > * {
+        transform: scale(1);
+    }
+    .cPage_headline {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    .cPage_description {
+        line-height: 1.3;
+        font-size: 0.9rem;
+    }
+}

@@ -35,7 +35,7 @@ export default function ProductPage() {
         navigate('/404');
         return null;
     }
-
+ 
     const [item] = id ? shoeData.filter((shoe) => shoe.id === +id) : [];
     const [selectedImg, setSelectedImg] = useState<number>(1);
 
@@ -86,8 +86,7 @@ export default function ProductPage() {
         if (buyNow) setCartMenu(() => true);
     };
 
-    // Similar Products
-
+    // Similar Products - Section
     function getRandomItemsByCategory(
         data: ShoeItem[],
         category: string | undefined
