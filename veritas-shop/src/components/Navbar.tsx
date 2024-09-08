@@ -8,6 +8,7 @@ import cartIcon from '../assets/regular-icons/cart.svg';
 import '../styles/Navbar.css';
 import { ShoppingCart } from './ShoppingCart';
 import { SearchMenu } from './SearchMenu';
+import { useCart } from '../contexts/useCart';
 
 interface Props {
     inView: boolean;
@@ -26,6 +27,17 @@ function Navbar({ inView }: Props) {
     const navLink04 = useRef<HTMLAnchorElement>(null);
     const navLink05 = useRef<HTMLAnchorElement>(null);
     const navLinks = [navLink01, navLink02, navLink03, navLink04, navLink05];
+
+    const { cartMenu, setCartMenu } = useCart();
+
+    // Open the Cart, when the User click on "Buy Now"
+    useEffect(() => {
+        if(cartMenu) {
+            showCart();
+            setCartMenu(() => false)
+        }
+        return
+    },[cartMenu])
 
     // Watch screen-width on resize
     const windowWidth = useWindowWidth();

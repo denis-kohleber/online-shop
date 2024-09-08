@@ -23,12 +23,16 @@ interface CartContextType {
     deleteItem: (id: number, size: number) => void;
     total: number;
     clearCart: () => void;
+    cartMenu: boolean;
+    setCartMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+    const [cartMenu, setCartMenu] = useState<boolean>(false);
 
     const addToCart = (item: CartItem) => {
         setCartItems((prevItems) => {
@@ -104,6 +108,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
                 decreaseItem,
                 deleteItem,
                 total,
+                cartMenu,
+                setCartMenu,
             }}
         >
             {children}

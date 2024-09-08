@@ -6,7 +6,7 @@ import { preloadImageLinks } from '../utils/preloadImages.ts';
 
 preloadImageLinks();
 
-function Home() {
+export default function Home() {
     return (
         <>
             <HeroBanner />
@@ -16,5 +16,3 @@ function Home() {
         </>
     );
 }
-
-export { Home };

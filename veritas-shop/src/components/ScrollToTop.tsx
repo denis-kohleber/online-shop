@@ -6,7 +6,7 @@ function ScrollToTop() {
 
     // This effect runs whenever the path name changes
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'instant' });
     }, [pathName]);
 
     return null;

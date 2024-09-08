@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/NotFound.css';
 
-function NotFound() {
+export default function NotFound() {
     const navigate = useNavigate();
 
     const handleGoBack = () => {
@@ -32,5 +32,3 @@ function NotFound() {
         </section>
     );
 }
-
-export { NotFound };

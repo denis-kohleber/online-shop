@@ -39,13 +39,17 @@ const SizeModal = forwardRef<SizeModalHandles, SizeModalProps>(
             blur: () => btnRef.current?.blur(),
         }));
 
-        const handleSizeClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, size: number) => {
+        const handleSizeClick = (
+            e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+            size: number
+        ) => {
             e.preventDefault();
             setSize(size);
             dialogRef.current?.close();
         };
 
         const handleOutsideClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+            e.preventDefault();
             if (e.target === dialogRef.current) {
                 dialogRef.current?.close();
             }

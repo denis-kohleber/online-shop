@@ -4,10 +4,10 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { CartProvider } from '../contexts/CartContext';
 import { Route, Routes } from 'react-router-dom';
-import { Home } from '../pages/Home';
-import { CategoriesPage } from '../pages/CategoriesPage';
-import { NotFound } from '../pages/NotFound';
-import { ProductPage } from '../pages/ProductPage';
+import Home from '../pages/Home';
+import CategoriesPage from '../pages/CategoriesPage';
+import NotFound from '../pages/NotFound';
+import ProductPage from '../pages/ProductPage';
 
 function App() {
     const { ref, inView } = useInView({
@@ -23,8 +23,14 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/categories/:category" element={<CategoriesPage />} />
-                    <Route path="/categories/:category/:id" element={<ProductPage />} />
+                    <Route
+                        path="/categories/:category"
+                        element={<CategoriesPage />}
+                    />
+                    <Route
+                        path="/categories/:category/:id"
+                        element={<ProductPage />}
+                    />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>

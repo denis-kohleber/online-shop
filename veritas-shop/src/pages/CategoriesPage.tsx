@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import shoeData from '../shoeData.json';
 import { checkCategoryUrl } from '../utils/urlValidation';
 
-function CategoriesPage() {
+export default function CategoriesPage() {
     const { category } = useParams<string>();
     const navigate = useNavigate();
 
@@ -20,5 +20,3 @@ function CategoriesPage() {
         </>
     );
 }
-
-export { CategoriesPage };
