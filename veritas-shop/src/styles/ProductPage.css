@@ -1,3 +1,5 @@
+/* || SECTION - Product Display */
+
 .pPage_productSection {
     padding: var(--contentSpace) 7vw var(--contentSpace);
     display: flex;

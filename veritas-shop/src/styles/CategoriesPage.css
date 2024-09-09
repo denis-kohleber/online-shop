@@ -1,3 +1,5 @@
+/* || SECTION - Introduction */
+
 .cPage_introduction {
     display: flex;
 }
@@ -14,7 +16,6 @@
     font-family: 'RedRose';
     text-align: center;
     letter-spacing: 1.5px;
-    
 }
 
 .cPage_headline {
@@ -31,6 +32,7 @@
     width: 100%;
     min-width: 600px;
     max-height: 500px;
+    background-color: #4b4b4b;
 }
 
 .cPage_hero > * {
@@ -39,8 +41,8 @@
 }
 
 .cPage_heroPlaceholder {
-    width: 2000px !important;
-    height: 100%;
+    width: 1920px !important;
+    height: 1050px;
 }
 
 @media screen and (max-width: 1100px) {
@@ -53,20 +55,16 @@
     }
 }
 
-.cPage_itemDisplay {
-    height: 100vw;
-}
-
 @media screen and (max-width: 800px) {
     .cPage_introduction {
         flex-flow: column-reverse;
     }
     .cPage_hero {
-        min-height: 350px;
+        height: 350px;
         min-width: 0;
     }
     .cPage_hero > * {
-        transform: scale(1);
+        transform: scale(1.2);
     }
     .cPage_headline {
         font-size: 1.8rem;
@@ -76,4 +74,145 @@
         line-height: 1.3;
         font-size: 0.9rem;
     }
+}
+
+/* || SECTION - ProductsGallery */
+
+.cPage_productsGallery {
+    padding: var(--contentSpace) 7vw var(--contentSpace);
+    display: flex;
+    flex-flow: column;
+    width: calc(100% - 14vw);
+    max-width: 1100px;
+    margin: auto;
+}
+
+.cPage_sort {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    gap: 8px;
+    font-family: 'RobotoSlab', sans-serif;
+    letter-spacing: 1px;
+}
+
+.cPage_sortH2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.cPage_sortList {
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content;
+    gap: 20px;
+    margin-left: -5px;
+}
+
+@media screen and (max-width: 750px) {
+    .cPage_sortList {
+        grid-template: auto auto / auto auto;
+        row-gap: 0;
+    }
+}
+
+.cPage_sortButton {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    font-family: 'RobotoSlab', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 450px) {
+    .cPage_sortButton {
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+    .cPage_sortList {
+        gap: 0;
+    }
+}
+
+.cPage_sortButton::before {
+    background-color: var(--accentColor);
+    border-radius: 2px;
+}
+
+.cPage_partingLine {
+    height: 3px;
+    background-color: var(--accentColor);
+    width: 100%;
+    border-radius: 10px;
+}
+
+.cPage_products {
+    max-width: min(1200px, 85vw);
+    display: grid;
+    grid-template: auto / auto auto auto auto;
+    justify-content: start;
+    gap: 40px 20px;
+    max-width: 1200px;
+    padding: 60px 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .cPage_products {
+        display: grid;
+        grid-template: auto auto / auto auto;
+        gap: 5vw;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .cPage_products {
+        grid-template: auto auto / 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .cPage_products {
+        gap: 10px;
+    }
+}
+
+.cPage_siteChangeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.5px;
+    font-family: 'RobotoSlab', sans-serif;
+    font-size: 1.2rem;
+}
+
+.cPage_actualSite {
+    padding: 0 20px;
+}
+
+.cPage_previousBtn,
+.cPage_nextBtn {
+    background-color: transparent;
+    border: none;
+    height: 40px;
+    width: 40px;
+    transition: transform 0.2s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cPage_previousBtn::before,
+.cPage_nextBtn::before {
+    background-color: var(--accentColor);
+    border-radius: 100%;
+    transform: none;
+}
+
+.cPage_nextBtn:hover {
+    transform: translateX(10px);
+}
+
+.cPage_previousBtn:hover {
+    transform: translateX(-10px);
 }

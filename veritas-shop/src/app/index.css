@@ -295,6 +295,7 @@ main {
     max-width: 100%;
     width: 500px;
     filter: blur(5px);
+    transform: scale(1.2);
     opacity: 0;
     object-fit: cover;
 }

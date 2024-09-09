@@ -35,7 +35,7 @@ export default function ProductPage() {
         navigate('/404');
         return null;
     }
- 
+
     const [item] = id ? shoeData.filter((shoe) => shoe.id === +id) : [];
     const [selectedImg, setSelectedImg] = useState<number>(1);
 
@@ -119,6 +119,9 @@ export default function ProductPage() {
                         )}
                         alt={item.title}
                         classContainer="pPage_mainImgContainer"
+                        initialOpacity={0}
+                        animateOpacity={1}
+                        transitionDuration={1}
                     />
                     <div className="pPage_imgChoosingContainer">
                         <button
@@ -136,6 +139,9 @@ export default function ProductPage() {
                                 )}
                                 alt={item.title}
                                 classImg="pPage_selectImg"
+                                initialOpacity={0}
+                                animateOpacity={1}
+                                transitionDuration={1}
                             />
                         </button>
                         <button
@@ -153,6 +159,9 @@ export default function ProductPage() {
                                 )}
                                 alt={item.title}
                                 classImg="pPage_selectImg"
+                                initialOpacity={0}
+                                animateOpacity={1}
+                                transitionDuration={1}
                             />
                         </button>
                     </div>
@@ -273,7 +282,10 @@ export default function ProductPage() {
                         />
                     ))}
                 </div>
-                <Link className="pPage_discoverMoreLink" to={`/categories/${category}`}>
+                <Link
+                    className="pPage_discoverMoreLink"
+                    to={`/categories/${category}`}
+                >
                     Entdecke mehr
                     <img src={arrow} alt="" />
                 </Link>
