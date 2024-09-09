@@ -276,8 +276,6 @@ function Footer() {
                         </section>
                     </article>
 
-                    <div className="partingLine"></div>
-
                     <nav className="footerNav">
                         <ul className="footerLinks">
                             <li className="footerLink">© Veritas GmbH 2024</li>

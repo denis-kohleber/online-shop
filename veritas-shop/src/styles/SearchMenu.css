@@ -36,9 +36,18 @@
         hue-rotate(337deg) brightness(81%) contrast(75%);
 }
 
-.closeSearchBtn:hover,
-.closeSearchBtn:focus {
-    filter: var(--filterYellow);
+@media (hover: hover) {
+    .closeSearchBtn:hover,
+    .closeSearchBtn:focus {
+        filter: var(--filterYellow);
+    }
+}
+
+@media (pointer: coarse) {
+    .closeSearchBtn:active,
+    .closeSearchBtn:focus {
+        filter: var(--filterYellow);
+    }
 }
 
 .searchInputContainer {

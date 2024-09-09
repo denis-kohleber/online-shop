@@ -55,15 +55,15 @@ const Categories = () => {
     // Controll if Element is inView
     const isInView01 = useInView(figures[0], {
         once: true,
-        margin: '0px 0px -200px 0px',
+        margin: '0px 0px -100px 0px',
     });
     const isInView02 = useInView(figures[1], {
         once: true,
-        margin: '0px 0px -200px 0px',
+        margin: '0px 0px -100px 0px',
     });
     const isInView03 = useInView(figures[2], {
         once: true,
-        margin: '0px 0px -200px 0px',
+        margin: '0px 0px -100px 0px',
     });
 
     // Start animation
@@ -74,7 +74,7 @@ const Categories = () => {
                     opacity: 1,
                     x: 0,
                     scale: 1,
-                    transition: { duration: 0.4, type: 'tween' },
+                    transition: { duration: 0.3, type: 'tween' },
                 });
             }
 

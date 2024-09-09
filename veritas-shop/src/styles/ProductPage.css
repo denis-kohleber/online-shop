@@ -141,7 +141,7 @@
     font-size: 1.4rem;
     font-weight: 500;
     font-family: 'RobotoSlab', sans-serif;
-    color: #d3ab4e;
+    color: #946000;
 }
 
 .pPage_productConfiqContainer {
@@ -163,30 +163,40 @@
     cursor: pointer;
 }
 
-.pPage_input:hover, .pPage_input:focus {
-    background-color: var(--complementalColor);
-    z-index: 3;
+@media (hover: hover) {
+    .pPage_input:hover,
+    .pPage_input:focus {
+        background-color: var(--complementalColor);
+        z-index: 3;
+    }
+}
+
+@media (pointer: coarse) {
+    .pPage_input:active,
+    .pPage_input:focus {
+        background-color: var(--complementalColor);
+        z-index: 3;
+    }
 }
 
 .pPage_input {
-    background-image:
-      linear-gradient(45deg, transparent 50%, var(--accentColor) 50%),
-      linear-gradient(135deg, var(--accentColor) 50%, transparent 50%);
-    background-position:
-      calc(100% - 20px) calc(1.2rem),
-      calc(100% - 15px) calc(1.2rem),
-      100% 0;
-    background-size:
-      5px 5px,
-      5px 5px,
-      2.5rem 3rem;
+    background-image: linear-gradient(
+            45deg,
+            transparent 50%,
+            var(--accentColor) 50%
+        ),
+        linear-gradient(135deg, var(--accentColor) 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(1.2rem),
+        calc(100% - 15px) calc(1.2rem), 100% 0;
+    background-size: 5px 5px, 5px 5px, 2.5rem 3rem;
     background-repeat: no-repeat;
-    margin: 0;      
+    margin: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
+    margin-top: 5px;
 }
 
 .pPage_inputContainer {
@@ -242,18 +252,15 @@
 
 .pPage_buyBtn {
     background-color: var(--primaryColor);
-    box-shadow: 0 0 0 4px var(--complementalColor) inset;
-    color: var(--complementalColor);
+    box-shadow: 0 0 0 4px var(--secondaryColor) inset;
+    color: var(--secondaryColor);
 }
 
 .pPage_buyBtn::before {
-    content: 'Jetzt kaufen';
-    color: var(--primaryColor);
     background-color: var(--complementalColor);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
 }
 
 /* || SECTION - Similar Products */
@@ -300,7 +307,6 @@
     .pPage_sP_Container {
         grid-template: auto auto / 1fr 1fr;
     }
-
 }
 
 @media screen and (max-width: 470px) {
@@ -316,8 +322,8 @@
 }
 
 .pPage_discoverMoreLink {
-    color: #D3AB4E;
-    width: 100%;
+    width: fit-content;
+    margin: auto;
     margin-top: 80px;
     font-size: 1.3rem;
     font-weight: 500;
@@ -327,7 +333,7 @@
     gap: 10px;
 }
 
-.pPage_discoverMoreLink:hover, 
+.pPage_discoverMoreLink:hover,
 .pPage_discoverMoreLink:focus {
-    filter: var(--filterBlack);
+    filter: var(--filterYellow);
 }

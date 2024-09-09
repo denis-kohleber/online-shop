@@ -10,7 +10,7 @@ import { MouseEvent, useEffect, useRef, useState } from 'react';
 import { FancyImg } from '../components/FancyImg';
 import { useCart } from '../contexts/useCart';
 import { ProductCard } from '../components/ProductCard';
-import arrow from '../assets/regular-icons/arrow-yellow.svg';
+import arrow from '../assets/regular-icons/arrow.svg';
 
 interface ShoeItem {
     id: number;
@@ -125,6 +125,7 @@ export default function ProductPage() {
                     <div className="pPage_imgChoosingContainer">
                         <button
                             className="pPage_selectImgBtn"
+                            onMouseDown={(e) => e.preventDefault()}
                             onClick={(e) => {
                                 e.preventDefault;
                                 setSelectedImg(() => 1);
@@ -149,6 +150,7 @@ export default function ProductPage() {
                                 e.preventDefault;
                                 setSelectedImg(() => 2);
                             }}
+                            onMouseDown={(e) => e.preventDefault()}
                         >
                             <FancyImg
                                 classContainer="pPage_selectImgContainer"
@@ -206,21 +208,25 @@ export default function ProductPage() {
                                 </figure>
                             ) : null}
                         </div>
-                        <div className="pPage_productConfiqContainer">
+                        <form className="pPage_productConfiqContainer">
                             <div className="pPage_inputContainer">
+                                <label htmlFor="quantityInput" className='pPage_label'>Menge:</label>
                                 <select
+                                    id='quantityInput'
                                     className="pPage_quantityInput pPage_input"
                                     ref={quantityRef}
                                 >
                                     {quantity.map((quantity) => (
                                         <option key={quantity} value={quantity}>
-                                            {`Menge: ${quantity}`}
+                                            {`${quantity}`}
                                         </option>
                                     ))}
                                 </select>
                             </div>
                             <div className="pPage_inputContainer">
+                                <label htmlFor="sizeInput" className='pPage_label'>Schuhgröße:</label>
                                 <select
+                                    id="sizeInput"
                                     className={`pPage_sizeInput pPage_input ${
                                         sizeErr ? 'err' : ''
                                     }`}
@@ -243,15 +249,17 @@ export default function ProductPage() {
                                     Wählen Sie eine Schuhgröße
                                 </p>
                             </div>
-                        </div>
+                        </form>
                         <div className="pPage_purchaseBtnContainer">
                             <button
                                 onClick={(e) => handleAddBtn(e)}
                                 className="pPage_addCartBtn"
+                                onMouseDown={(e) => e.preventDefault()}
                             >
                                 Warenkorb hinzufügen
                             </button>
                             <button
+                                onMouseDown={(e) => e.preventDefault()}
                                 onClick={(e) => handleAddBtn(e, true)}
                                 className="pPage_buyBtn"
                             >

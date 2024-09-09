@@ -23,7 +23,7 @@ interface ShoeItem {
     'image-front': string;
     'image-back': string;
     rating: number;
-    waterproof: boolean; 
+    waterproof: boolean;
     highlight: boolean;
 }
 
@@ -172,6 +172,7 @@ export default function CategoriesPage() {
                             <button
                                 className="cPage_sortButton"
                                 onClick={sortByRelevance}
+                                onMouseDown={(e) => e.preventDefault()}
                             >
                                 Relevanz
                             </button>
@@ -180,6 +181,7 @@ export default function CategoriesPage() {
                             <button
                                 className="cPage_sortButton"
                                 onClick={sortByPriceAscending}
+                                onMouseDown={(e) => e.preventDefault()}
                             >
                                 Preis aufsteigend
                             </button>
@@ -188,6 +190,7 @@ export default function CategoriesPage() {
                             <button
                                 className="cPage_sortButton"
                                 onClick={sortByPriceDescending}
+                                onMouseDown={(e) => e.preventDefault()}
                             >
                                 Preis absteigend
                             </button>
@@ -196,6 +199,7 @@ export default function CategoriesPage() {
                             <button
                                 className="cPage_sortButton"
                                 onClick={sortByRatingDescending}
+                                onMouseDown={(e) => e.preventDefault()}
                             >
                                 Bewertungen
                             </button>
@@ -234,6 +238,7 @@ export default function CategoriesPage() {
 
                 <div className="cPage_siteChangeContainer">
                     <button
+                        onMouseDown={(e) => e.preventDefault()}
                         onClick={goToPreviousPage}
                         className="cPage_previousBtn"
                         aria-label="Vorherige Seite"
@@ -241,7 +246,11 @@ export default function CategoriesPage() {
                         <img src={arrowLeftIcon} alt="Pfeil-Links" />
                     </button>
                     <p className="cPage_actualSite">{`Seite ${currentPage} von ${totalPages}`}</p>
-                    <button className="cPage_nextBtn" onClick={goToNextPage}>
+                    <button
+                        className="cPage_nextBtn"
+                        onClick={goToNextPage}
+                        onMouseDown={(e) => e.preventDefault()}
+                    >
                         <img
                             src={arrowRightIcon}
                             alt="Pfeil-Rechts"

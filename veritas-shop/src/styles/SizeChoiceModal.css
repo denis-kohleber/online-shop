@@ -55,9 +55,18 @@
     width: 30px;
 }
 
-.closeBtnModalSizes:hover > img,
-.closeBtnModalSizes:focus > img {
-    filter: var(--filterYellow);
+@media (hover: hover) {
+    .closeBtnModalSizes:hover > img,
+    .closeBtnModalSizes:focus > img {
+        filter: var(--filterYellow);
+    }
+}
+
+@media (pointer: coarse) {
+    .closeBtnModalSizes:active > img,
+    .closeBtnModalSizes:focus > img {
+        filter: var(--filterYellow);
+    }
 }
 
 .modalSizesH {

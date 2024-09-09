@@ -163,7 +163,6 @@ footer {
 
 .footerMain {
     display: flex;
-    flex-flow: column;
     justify-content: center;
     width: calc(100% - 14vw);
     padding: 30px 7vw;
@@ -183,18 +182,21 @@ footer {
 
 .footerMainWrapper {
     align-self: center;
-    display: flex;
-    flex-flow: column;
+    display: grid;
     justify-content: center;
+    grid-template: auto auto / auto auto;
     gap: 30px;
     width: 100%;
     max-width: 1200px;
 }
 
-.partingLineFooter {
-    height: 3px;
-    background-color: var(--accentColor);
-    width: 100%;
+@media screen and (max-width: 630px) {
+    .footerMainWrapper {
+        grid-template: auto auto auto / auto;
+    }
+    .footerNav {
+        grid-area: auto !important;
+    }
 }
 
 /* || FOOTER - Services */
@@ -302,6 +304,7 @@ footer {
 
 .footerNav {
     width: 100%;
+    grid-area: -2 / 1 / -1 / 3;
 }
 
 .footerLinks {

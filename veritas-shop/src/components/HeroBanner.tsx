@@ -62,6 +62,7 @@ const HeroBanner = () => {
                             alt=""
                             className="carouselImg"
                             onClick={handleNext}
+                            onMouseDown={e => e.preventDefault()}
                             width={'100%'}
                             height={'100%'}
                         />
@@ -99,6 +100,7 @@ const HeroBanner = () => {
                             alt=""
                             className="carouselImg"
                             onClick={handleNext}
+                            onMouseDown={e => e.preventDefault()}
                             width={'100%'}
                             height={'100%'}
                         />
@@ -135,6 +137,7 @@ const HeroBanner = () => {
                             alt=""
                             className="carouselImg"
                             onClick={handleNext}
+                            onMouseDown={e => e.preventDefault()}
                             width={'100%'}
                             height={'100%'}
                         />
@@ -167,6 +170,7 @@ const HeroBanner = () => {
 
             <button
                 onClick={handlePrev}
+                onMouseDown={e => e.preventDefault()}
                 className="carouselBtn hero prevBtn"
                 aria-label="Nächstes Banner"
             >
@@ -175,6 +179,7 @@ const HeroBanner = () => {
 
             <button
                 onClick={handleNext}
+                onMouseDown={e => e.preventDefault()}
                 className="carouselBtn hero nextBtn"
                 aria-label="Vorheriges Banner"
             >

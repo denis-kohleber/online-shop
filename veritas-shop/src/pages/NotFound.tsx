@@ -28,6 +28,21 @@ export default function NotFound() {
                         Zur Startseite
                     </button>
                 </Link>
+                <Link className="p404Link" to={'/categories/outdoor'}>
+                    <button className="p404HomeBtn p404Btn">
+                        Outdoor Artikel
+                    </button>
+                </Link>
+                <Link className="p404Link" to={'/categories/workwear'}>
+                    <button className="p404HomeBtn p404Btn">
+                        Workwear Artikel
+                    </button>
+                </Link>
+                <Link className="p404Link" to={'/categories/sport'}>
+                    <button className="p404HomeBtn p404Btn">
+                        Sport Artikel
+                    </button>
+                </Link>
             </div>
         </section>
     );

@@ -28,16 +28,16 @@ function Navbar({ inView }: Props) {
     const navLink05 = useRef<HTMLAnchorElement>(null);
     const navLinks = [navLink01, navLink02, navLink03, navLink04, navLink05];
 
-    const { cartMenu, setCartMenu } = useCart();
+    const { cartMenu, setCartMenu, cartItems } = useCart();
 
     // Open the Cart, when the User click on "Buy Now"
     useEffect(() => {
-        if(cartMenu) {
+        if (cartMenu) {
             showCart();
-            setCartMenu(() => false)
+            setCartMenu(() => false);
         }
-        return
-    },[cartMenu])
+        return;
+    }, [cartMenu]);
 
     // Watch screen-width on resize
     const windowWidth = useWindowWidth();
@@ -53,7 +53,7 @@ function Navbar({ inView }: Props) {
                 if (element.current) element.current.tabIndex = 0;
             });
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [windowWidth]);
 
     const activateTabIndexMenu = () => {
@@ -143,6 +143,18 @@ function Navbar({ inView }: Props) {
         };
     }, [isMenuActive, isCartActive, isSearchActive, windowWidth]);
 
+    // Cart Icon
+    const [isCartNull, setIsCartNull] = useState<boolean>(true);
+
+    useEffect(() => {
+        const total = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        if (total === 0) {
+            setIsCartNull(() => true);
+        } else {
+            setIsCartNull(() => false);
+        }
+    });
+
     return (
         <nav className="nav" ref={navRef}>
             <div className="navWrapper">
@@ -151,6 +163,7 @@ function Navbar({ inView }: Props) {
                     to="/"
                     aria-label="Home-Link"
                     onClick={removeMenus}
+                    onMouseDown={(e) => e.preventDefault()}
                 >
                     <img
                         className={`navLogo ${!inView && 'active'}`}
@@ -164,6 +177,7 @@ function Navbar({ inView }: Props) {
                     ref={burgerBtn}
                     aria-label="Öffnen/Schließen Menü"
                     onClick={showCloseMenu}
+                    onMouseDown={(e) => e.preventDefault()}
                 >
                     <svg
                         className={`ham hamRotate ${
@@ -192,6 +206,7 @@ function Navbar({ inView }: Props) {
                     ref={navLink01}
                     className="navLink navLinkSearch"
                     onClick={showSearch}
+                    onMouseDown={(e) => e.preventDefault()}
                 >
                     SUCHE
                     <img className="searchIconMenu" src={searchIcon02} alt="" />
@@ -201,6 +216,7 @@ function Navbar({ inView }: Props) {
                     to="/categories/outdoor"
                     className="navLink navLinkOutdoor"
                     onClick={onClickMenuLink}
+                    onMouseDown={(e) => e.preventDefault()}
                 >
                     OUTDOOR
                 </Link>
@@ -209,6 +225,7 @@ function Navbar({ inView }: Props) {
                     to="/categories/workwear"
                     className="navLink navLinkWorkwear"
                     onClick={onClickMenuLink}
+                    onMouseDown={(e) => e.preventDefault()}
                 >
                     WORKWEAR
                 </Link>
@@ -217,6 +234,7 @@ function Navbar({ inView }: Props) {
                     to="/categories/sport"
                     className="navLink navLinkSport"
                     onClick={onClickMenuLink}
+                    onMouseDown={(e) => e.preventDefault()}
                 >
                     SPORT
                 </Link>
@@ -226,6 +244,7 @@ function Navbar({ inView }: Props) {
                     onClick={onClickMenuLink}
                     to="/about-us"
                     className="navLink navLinkAboutUs"
+                    onMouseDown={(e) => e.preventDefault()}
                 >
                     ÜBER UNS
                 </Link>
@@ -236,14 +255,25 @@ function Navbar({ inView }: Props) {
                     className="navBtn navBtnCart"
                     id="navBtnCart"
                     onClick={showCart}
+                    onMouseDown={(e) => e.preventDefault()}
                     aria-label="Warenkorb anzeigen/schließen"
                 >
                     <img className="navIcon" src={cartIcon} alt="cart-button" />
+                    <p
+                        aria-label="Produktmenge im Warenkorb"
+                        className={`navCartItemCounter ${
+                            isCartNull ? 'none' : ''
+                        }`}
+                    >{`${cartItems.reduce(
+                        (sum, item) => sum + item.quantity,
+                        0
+                    )}`}</p>
                 </button>
                 <button
                     className="navBtn navBtnSearch"
                     id="navBtnSearch"
                     onClick={showSearch}
+                    onMouseDown={(e) => e.preventDefault()}
                     aria-label="Suchleiste anzeigen/schließen"
                 >
                     <img

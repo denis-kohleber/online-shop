@@ -120,15 +120,32 @@
     cursor: pointer;
 }
 
-.carouselBtnImg:hover,
-.carouselBtn.hl:focus > .carouselBtnImg {
-    opacity: 1;
-    transform: translateX(-10px);
+
+
+@media (hover: hover) {
+    .carouselBtnImg:hover,
+    .carouselBtn.hl:focus > .carouselBtnImg {
+        opacity: 1;
+        transform: translateX(-10px);
+    }
+    
+    .carouselBtnImg02:hover,
+    .carouselBtn.hl:focus > .carouselBtnImg02 {
+        transform: translateX(+10px);
+    }
 }
 
-.carouselBtnImg02:hover,
-.carouselBtn.hl:focus > .carouselBtnImg02 {
-    transform: translateX(+10px);
+@media (pointer: coarse) {
+    .carouselBtnImg:active,
+    .carouselBtn.hl:focus > .carouselBtnImg {
+        opacity: 1;
+        transform: translateX(-10px);
+    }
+    
+    .carouselBtnImg02:active,
+    .carouselBtn.hl:focus > .carouselBtnImg02 {
+        transform: translateX(+10px);
+    }
 }
 
 .dummyCard {

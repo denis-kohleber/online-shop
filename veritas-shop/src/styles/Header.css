@@ -10,6 +10,10 @@
     position: relative;
 }
 
+.headerLink:focus {
+    outline: auto;
+}
+
 .headerBg {
     background-color: #181818;
     position: absolute;

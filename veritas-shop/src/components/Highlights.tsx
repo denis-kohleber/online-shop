@@ -125,6 +125,7 @@ const Highlights = () => {
                         </div>
                         <button
                             onClick={handlePrev}
+                            onMouseDown={e => e.preventDefault()}
                             className="carouselBtn hl prevBtn"
                             aria-label="Nächstes Banner"
                         >
@@ -136,6 +137,7 @@ const Highlights = () => {
                         </button>
                         <button
                             onClick={handleNext}
+                            onMouseDown={e => e.preventDefault()}
                             className="carouselBtn hl nextBtn"
                             aria-label="Vorheriges Banner"
                         >

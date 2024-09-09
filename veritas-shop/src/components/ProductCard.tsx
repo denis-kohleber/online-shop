@@ -150,6 +150,7 @@ const ProductCard = ({
                 </figure>
 
                 <button
+                    onMouseDown={(e) => e.preventDefault()}
                     ref={addCartBtn}
                     onClick={(event) => {
                         event.stopPropagation(); // Prevent the activation of the Link

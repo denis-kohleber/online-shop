@@ -15,7 +15,7 @@
     font-size: 128px;
     font-weight: bold;
     letter-spacing: 10px;
-    color: var(--accentColor);
+    color: #707070;
 }
 
 .p404H2 {
@@ -38,10 +38,10 @@
 
 .p404Btn {
     border-radius: 10px;
-    border: 4px solid var(--accentColor);
+    border: 4px solid #707070;
     padding: 20px 0;
     font-size: 1.1rem;
-    color: var(--accentColor);
+    color: #707070;
     font-weight: bold;
     max-width: 300px;
     width: 100%;
@@ -54,9 +54,10 @@
 }
 
 .p404Btn::before {
-    background-color: var(--accentColor);
+    background-color: #707070;
+    border: 4px solid #707070;
     border-radius: 0;
-    color: var(--secondaryColor);
+    color: var(--primaryColor);
     display: flex;
     justify-content: center;
     align-items: center;

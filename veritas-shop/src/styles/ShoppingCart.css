@@ -208,8 +208,18 @@
     cursor: pointer;
 }
 
-.deleteBtn:hover,
-.deleteBtn:focus {
-    filter: brightness(0) saturate(100%) invert(40%) sepia(72%) saturate(600%)
-        hue-rotate(313deg) brightness(98%) contrast(74%);
+@media (hover: hover) {
+    .deleteBtn:hover,
+    .deleteBtn:focus {
+        filter: brightness(0) saturate(100%) invert(40%) sepia(72%)
+            saturate(600%) hue-rotate(313deg) brightness(98%) contrast(74%);
+    }
+}
+
+@media (pointer: coarse) {
+    .deleteBtn:active,
+    .deleteBtn:focus {
+        filter: brightness(0) saturate(100%) invert(40%) sepia(72%)
+            saturate(600%) hue-rotate(313deg) brightness(98%) contrast(74%);
+    }
 }
