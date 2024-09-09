@@ -55,7 +55,7 @@ const ShoppingCart = ({ isCartActive }: Props) => {
             >
                 {cartItems.map((item) => (
                     <article className="cartProduct" key={item.id + item.size}>
-                        <Link to={`/${item.category}/${item.id}`}>
+                        <Link to={`/categories/${item.category}/${item.id}`}>
                             <img
                                 className="cartImg"
                                 src={getImageURL(item.imageFront)}

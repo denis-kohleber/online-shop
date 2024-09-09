@@ -6,7 +6,7 @@ import { getImageURL, getPlaceholderImageURL } from '../utils/image-util';
 import { RatingStars } from '../components/RatingStars';
 import gearIcon from '../assets/regular-icons/zahnrad.svg';
 import waterIcon from '../assets/regular-icons/water-check.svg';
-import { MouseEvent, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 import { FancyImg } from '../components/FancyImg';
 import { useCart } from '../contexts/useCart';
 import { ProductCard } from '../components/ProductCard';
@@ -87,20 +87,19 @@ export default function ProductPage() {
     };
 
     // Similar Products - Section
-    function getRandomItemsByCategory(
-        data: ShoeItem[],
-        category: string | undefined
-    ) {
-        const filteredItems = data.filter((item) => item.category === category);
+    const [randomItems, setRandomItems] = useState<ShoeItem[]>(shoeData);
+
+    useEffect(() => {
+        const filteredItems: ShoeItem[] = shoeData.filter(
+            (item) => item.category === category
+        );
 
         const shuffledItems = filteredItems.sort(() => Math.random() - 0.5);
 
         const selectedItems = shuffledItems.slice(0, 8);
 
-        return selectedItems;
-    }
-
-    const randomItems = getRandomItemsByCategory(shoeData, category);
+        setRandomItems(() => selectedItems);
+    }, []);
 
     return (
         <>

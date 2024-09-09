@@ -5,6 +5,7 @@ import closeIcon from '../assets/regular-icons/window-close.svg';
 import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import shoeData from '../shoeData.json';
+import { motion } from 'framer-motion';
 
 interface Props {
     isSearchActive: boolean;
@@ -153,7 +154,7 @@ const SearchMenu = ({ isSearchActive, removeMenus }: Props) => {
                         const isLastItem = index === items.length - 1;
                         return (
                             <Link
-                                to={`/${item.category}/${item.id}`}
+                                to={`/categories/${item.category}/${item.id}`}
                                 className="searchResultLink btn"
                                 key={item.title + item.imageFront}
                                 tabIndex={isSearchActive ? 0 : -1}
@@ -163,7 +164,17 @@ const SearchMenu = ({ isSearchActive, removeMenus }: Props) => {
                                         : undefined
                                 }
                             >
-                                <article className="searchResult">
+                                <motion.article
+                                    className="searchResult"
+                                    key={`${item.id}-result-${items.length}`}
+                                    initial={{ opacity: 0, x: -30 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{
+                                        duration: 0.3,
+                                        type: 'tween',
+                                    }}
+                                >
                                     <img
                                         className="searchImg"
                                         src={getSearchProductImageURL(
@@ -183,7 +194,7 @@ const SearchMenu = ({ isSearchActive, removeMenus }: Props) => {
                                             {formatPrice(item.price)}
                                         </p>
                                     </div>
-                                </article>
+                                </motion.article>
                             </Link>
                         );
                     })
