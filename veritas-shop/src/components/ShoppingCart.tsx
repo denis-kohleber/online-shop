@@ -30,7 +30,7 @@ const ShoppingCart = ({ isCartActive }: Props) => {
     };
 
     const showOrderMsg = () => {
-        alert('Vielen Dank! Ihre Bestellung war erfolgreich ... ^^');
+        alert('Vielen Dank! Ihre Bestellung war erfolgreich ... ');
         clearCart();
     };
 

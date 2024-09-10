@@ -7,7 +7,11 @@ const Header = forwardRef<HTMLElement>((_props, ref) => {
     return (
         <header className="header" ref={ref}>
             <div className="headerBg"></div>
-            <Link to="/" className='headerLink'>
+            <Link
+                to="/"
+                className="headerLink"
+                onMouseDown={(e) => e.preventDefault()}
+            >
                 <img className="logo" src={Logo} alt="veritas" />
             </Link>
         </header>

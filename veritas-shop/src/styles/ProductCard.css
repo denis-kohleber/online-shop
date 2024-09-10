@@ -74,6 +74,8 @@
 
 .placeholderProductImg.notLoaded {
     animation: pulsate 1.5s infinite;
+    opacity: 1;
+    transition: opacity 0.3s linear ;
 }
 
 @keyframes pulsate {
