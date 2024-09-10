@@ -13,10 +13,16 @@
     right: 0;
     padding-top: 55px;
     gap: 0;
-    transform: translateX(410px);
-    transition: transform 0.4s;
+    transform: translateX(540px);
+    transition: transform 0.5s;
     overflow: auto;
     z-index: 2;
+}
+
+@media screen and (max-width: 500px) {
+    .shoppingCartWindow{
+        max-width: 520px;
+    }
 }
 
 .shoppingCartWindow.active {

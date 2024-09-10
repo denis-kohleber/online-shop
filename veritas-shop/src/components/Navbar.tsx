@@ -130,20 +130,20 @@ function Navbar({ inView }: Props) {
     };
 
     // Prevent the scrolling, when a menu is open
-    useEffect(() => {
-        if (windowWidth < 1000) {
-            if (isMenuActive || isCartActive || isSearchActive) {
-                document.body.classList.add('overflowHidden');
-            } else {
-                document.body.classList.remove('overflowHidden');
-            }
-        }
+    // useEffect(() => {
+    //     if (windowWidth < 1000) {
+    //         if (isMenuActive || isCartActive || isSearchActive) {
+    //             document.body.classList.add('overflowHidden');
+    //         } else {
+    //             document.body.classList.remove('overflowHidden');
+    //         }
+    //     }
 
-        // Cleanup
-        return () => {
-            document.body.classList.remove('overflowHidden');
-        };
-    }, [isMenuActive, isCartActive, isSearchActive, windowWidth]);
+    //     // Cleanup
+    //     return () => {
+    //         document.body.classList.remove('overflowHidden');
+    //     };
+    // }, [isMenuActive, isCartActive, isSearchActive, windowWidth]);
 
     // Cart Icon
     const [isCartNull, setIsCartNull] = useState<boolean>(true);
