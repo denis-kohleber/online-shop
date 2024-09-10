@@ -30,30 +30,49 @@ export default function ProductPage() {
     const { category, id } = useParams<string>();
     const navigate = useNavigate();
 
-    // Url Validation
-    if (category && id && !checkProductUrl(category, id, shoeData)) {
-        navigate('/404');
-        return null;
-    }
-
-    const [item] = id ? shoeData.filter((shoe) => shoe.id === +id) : [];
     const [selectedImg, setSelectedImg] = useState<number>(1);
+    const [sizeErr, setSizeErr] = useState<boolean>(false);
+    const sizeRef = useRef<HTMLSelectElement>(null);
+    const quantityRef = useRef<HTMLSelectElement>(null);
+    const { addToCart, setCartMenu } = useCart();
+    const [randomItems, setRandomItems] = useState<ShoeItem[]>([]);
+    const [item, setItem] = useState<ShoeItem | null>(null);
+
+    // URL Validation
+    useEffect(() => {
+        if (category && id) {
+            const isValidUrl = checkProductUrl(category, id, shoeData);
+            if (!isValidUrl) {
+                navigate('/404');
+                return;
+            }
+            const foundItem = shoeData.find((shoe) => shoe.id === +id);
+            setItem(foundItem || null);
+        }
+    }, [category, id, navigate]);
 
     const formatPrice = (price: number) => {
         return price.toFixed(2).replace('.', ',') + ' €';
     };
 
-    // Generate the shoe-sizes
+    // Similar Products - Section
+    useEffect(() => {
+        if (category) {
+            const filteredItems: ShoeItem[] = shoeData.filter(
+                (item) => item.category === category
+            );
+
+            const shuffledItems = filteredItems.sort(() => Math.random() - 0.5);
+
+            const selectedItems = shuffledItems.slice(0, 8);
+
+            setRandomItems(selectedItems);
+        }
+    }, [category]);
+
+    // generate quantity and sizes
     const sizes = Array.from({ length: 16 }, (_, i) => 35 + i);
-
-    // Generate quantity
     const quantity = Array.from({ length: 10 }, (_, i) => 1 + i);
-
-    // Add/Buy Functions
-    const [sizeErr, setSizeErr] = useState<boolean>(false);
-    const sizeRef = useRef<HTMLSelectElement>(null);
-    const quantityRef = useRef<HTMLSelectElement>(null);
-    const { addToCart, setCartMenu } = useCart();
 
     const handleAddBtn = (
         e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
@@ -61,45 +80,36 @@ export default function ProductPage() {
     ) => {
         e.preventDefault();
         if (!Number(sizeRef.current?.value)) {
-            setSizeErr(() => true);
+            setSizeErr(true);
             sizeRef.current?.focus();
             return;
         }
 
-        setSizeErr(() => false);
+        setSizeErr(false);
 
-        addToCart({
-            id: item.id,
-            title: item.title,
-            price: item.price,
-            description: item.description,
-            type: item.type,
-            imageFront: item['image-front'],
-            imageBack: item['image-back'],
-            rating: item.rating,
-            waterproof: item.waterproof,
-            size: Number(sizeRef.current?.value),
-            quantity: Number(quantityRef.current?.value),
-            category: item.category,
-        });
+        if (item) {
+            addToCart({
+                id: item.id,
+                title: item.title,
+                price: item.price,
+                description: item.description,
+                type: item.type,
+                imageFront: item['image-front'],
+                imageBack: item['image-back'],
+                rating: item.rating,
+                waterproof: item.waterproof,
+                size: Number(sizeRef.current?.value),
+                quantity: Number(quantityRef.current?.value),
+                category: item.category,
+            });
 
-        if (buyNow) setCartMenu(() => true);
+            if (buyNow) setCartMenu(true);
+        }
     };
 
-    // Similar Products - Section
-    const [randomItems, setRandomItems] = useState<ShoeItem[]>(shoeData);
-
-    useEffect(() => {
-        const filteredItems: ShoeItem[] = shoeData.filter(
-            (item) => item.category === category
-        );
-
-        const shuffledItems = filteredItems.sort(() => Math.random() - 0.5);
-
-        const selectedItems = shuffledItems.slice(0, 8);
-
-        setRandomItems(() => selectedItems);
-    }, []);
+    if (!item) {
+        return null; // When Product don't exist, return null.
+    }
 
     return (
         <>
@@ -126,10 +136,7 @@ export default function ProductPage() {
                         <button
                             className="pPage_selectImgBtn"
                             onMouseDown={(e) => e.preventDefault()}
-                            onClick={(e) => {
-                                e.preventDefault;
-                                setSelectedImg(() => 1);
-                            }}
+                            onClick={() => setSelectedImg(1)}
                         >
                             <FancyImg
                                 classContainer="pPage_selectImgContainer"
@@ -146,10 +153,7 @@ export default function ProductPage() {
                         </button>
                         <button
                             className="pPage_selectImgBtn"
-                            onClick={(e) => {
-                                e.preventDefault;
-                                setSelectedImg(() => 2);
-                            }}
+                            onClick={() => setSelectedImg(2)}
                             onMouseDown={(e) => e.preventDefault()}
                         >
                             <FancyImg
@@ -210,9 +214,14 @@ export default function ProductPage() {
                         </div>
                         <form className="pPage_productConfiqContainer">
                             <div className="pPage_inputContainer">
-                                <label htmlFor="quantityInput" className='pPage_label'>Menge:</label>
+                                <label
+                                    htmlFor="quantityInput"
+                                    className="pPage_label"
+                                >
+                                    Menge:
+                                </label>
                                 <select
-                                    id='quantityInput'
+                                    id="quantityInput"
                                     className="pPage_quantityInput pPage_input"
                                     ref={quantityRef}
                                 >
@@ -224,7 +233,12 @@ export default function ProductPage() {
                                 </select>
                             </div>
                             <div className="pPage_inputContainer">
-                                <label htmlFor="sizeInput" className='pPage_label'>Schuhgröße:</label>
+                                <label
+                                    htmlFor="sizeInput"
+                                    className="pPage_label"
+                                >
+                                    Schuhgröße:
+                                </label>
                                 <select
                                     id="sizeInput"
                                     className={`pPage_sizeInput pPage_input ${

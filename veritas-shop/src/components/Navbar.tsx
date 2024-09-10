@@ -37,6 +37,8 @@ function Navbar({ inView }: Props) {
             setCartMenu(() => false);
         }
         return;
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cartMenu]);
 
     // Watch screen-width on resize
@@ -153,7 +155,7 @@ function Navbar({ inView }: Props) {
         } else {
             setIsCartNull(() => false);
         }
-    });
+    }, [cartItems]);
 
     return (
         <nav className="nav" ref={navRef}>

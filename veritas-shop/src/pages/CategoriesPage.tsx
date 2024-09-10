@@ -33,34 +33,19 @@ export default function CategoriesPage() {
 
     const categoryName: string = category ? category : '';
 
-    // Url Validation
-    if (category && !checkCategoryUrl(category, shoeData)) {
-        navigate('/404');
-        return null;
-    }
-
-    const chooseText = (categoryName: string) => {
-        if (categoryName === 'outdoor') {
-            return 'Entdecke unsere Outdoor-Schuhe, die für Abenteuer in der Natur entwickelt wurden. Egal ob Wanderschuhe, Trekkingstiefel oder Trailrunning-Schuhe – unsere Kollektion bietet optimalen Halt, Komfort und Schutz für jedes Terrain. Perfekt für alle, die gerne draußen unterwegs sind und auf Qualität und Langlebigkeit setzen.';
-        }
-        if (categoryName === 'workwear') {
-            return 'Unsere Workwear-Schuhe bieten dir den nötigen Schutz und Komfort für lange Arbeitstage in anspruchsvollen Umgebungen. Von robusten Arbeitsschuhen bis zu speziellen Sicherheitsschuhen – hier findest du die richtige Ausrüstung, um sicher und effizient durch den Tag zu kommen. Strapazierfähig, sicher und zuverlässig.';
-        }
-        if (categoryName === 'sport') {
-            return 'Erreiche neue Bestleistungen mit unseren Sportschuhen, die für eine Vielzahl sportlicher Aktivitäten entwickelt wurden. Egal ob Fitness, Laufen oder Training – unsere Sportschuhe bieten dir optimalen Halt, Flexibilität und Atmungsaktivität, damit du dich ganz auf deine Performance konzentrieren kannst.';
-        }
-    };
-
-    // Product Display Logic
     const galleryRef = useRef<HTMLElement>(null);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
-    const [filteredProducts, setFilteredProducts] =
-        useState<ShoeItem[]>(shoeData);
-    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-    const [products, setProducts] = useState<ShoeItem[]>(filteredProducts);
-    const [currentProducts, setCurrentProducts] =
-        useState<ShoeItem[]>(filteredProducts);
+    const [filteredProducts, setFilteredProducts] = useState<ShoeItem[]>([]);
+    const [products, setProducts] = useState<ShoeItem[]>([]);
+    const [currentProducts, setCurrentProducts] = useState<ShoeItem[]>([]);
+
+    // URL Validation
+    useEffect(() => {
+        if (category && !checkCategoryUrl(category, shoeData)) {
+            navigate('/404');
+        }
+    }, [category, navigate]);
 
     useEffect(() => {
         const newFilteredData = shoeData.filter(
@@ -68,10 +53,10 @@ export default function CategoriesPage() {
         );
         setFilteredProducts(newFilteredData);
         setCurrentPage(1);
-    }, [category]);
+    }, [categoryName]);
 
     useEffect(() => {
-        setProducts(() => filteredProducts);
+        setProducts(filteredProducts);
     }, [filteredProducts]);
 
     useEffect(() => {
@@ -109,6 +94,8 @@ export default function CategoriesPage() {
         setCurrentPage(currentPage + 1);
     };
 
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
     function sortByPriceAscending() {
         setProducts((prevProducts) =>
             [...prevProducts].sort((a, b) => a.price - b.price)
@@ -128,8 +115,20 @@ export default function CategoriesPage() {
     }
 
     function sortByRelevance() {
-        setProducts(() => filteredProducts);
+        setProducts(filteredProducts);
     }
+
+    const chooseText = (categoryName: string) => {
+        if (categoryName === 'outdoor') {
+            return 'Entdecke unsere Outdoor-Schuhe, die für Abenteuer in der Natur entwickelt wurden. Egal ob Wanderschuhe, Trekkingstiefel oder Trailrunning-Schuhe – unsere Kollektion bietet optimalen Halt, Komfort und Schutz für jedes Terrain. Perfekt für alle, die gerne draußen unterwegs sind und auf Qualität und Langlebigkeit setzen.';
+        }
+        if (categoryName === 'workwear') {
+            return 'Unsere Workwear-Schuhe bieten dir den nötigen Schutz und Komfort für lange Arbeitstage in anspruchsvollen Umgebungen. Von robusten Arbeitsschuhen bis zu speziellen Sicherheitsschuhen – hier findest du die richtige Ausrüstung, um sicher und effizient durch den Tag zu kommen. Strapazierfähig, sicher und zuverlässig.';
+        }
+        if (categoryName === 'sport') {
+            return 'Erreiche neue Bestleistungen mit unseren Sportschuhen, die für eine Vielzahl sportlicher Aktivitäten entwickelt wurden. Egal ob Fitness, Laufen oder Training – unsere Sportschuhe bieten dir optimalen Halt, Flexibilität und Atmungsaktivität, damit du dich ganz auf deine Performance konzentrieren kannst.';
+        }
+    };
 
     return (
         <>
@@ -245,7 +244,9 @@ export default function CategoriesPage() {
                     >
                         <img src={arrowLeftIcon} alt="Pfeil-Links" />
                     </button>
-                    <p className="cPage_actualSite">{`Seite ${currentPage} von ${totalPages}`}</p>
+                    <p className="cPage_actualSite">
+                        Seite {currentPage} von {totalPages}
+                    </p>
                     <button
                         className="cPage_nextBtn"
                         onClick={goToNextPage}

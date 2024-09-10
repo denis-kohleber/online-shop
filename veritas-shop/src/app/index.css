@@ -154,7 +154,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: "";
+    content: '';
     content: none;
 }
 table {
@@ -178,7 +178,7 @@ body,
     scroll-behavior: smooth;
     width: 100%;
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: var(--secondaryColor3);
     /* Prevent highlighting on Touchscreens */
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -203,14 +203,14 @@ button,
     position: relative;
     z-index: 1;
     overflow: hidden;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     cursor: pointer;
 }
 
 button::before,
 .btn::before {
     position: absolute;
-    content: "";
+    content: '';
     top: 0;
     bottom: 0;
     left: 0;
@@ -329,5 +329,11 @@ main {
 
 .learnMoreLink::before {
     z-index: 1;
-    content: "MEHR ERFAHREN";
+    content: 'MEHR ERFAHREN';
+}
+
+/* Fallback */
+
+.fallback {
+    min-height: 200vh;
 }

@@ -140,7 +140,12 @@ const SearchMenu = ({ isSearchActive, removeMenus }: Props) => {
                 className="searchResultsContainer"
                 aria-label="Suchergebnisse"
             >
-                {inputLength === 0 ? null : items.length === 0 ? ( // Show nothing, when Input empty
+                {inputLength === 0 ? null : inputLength < 2 ? ( // Show nothing, when Input empty
+                    // Hint, when under 2 charackters
+                    <p className="noResults">
+                        Bitte mindestens 2 Zeichen eingeben
+                    </p>
+                ) : items.length === 0 ? (
                     // No Results? Message to User
                     <p className="noResults">Keine Artikel gefunden</p>
                 ) : (

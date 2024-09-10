@@ -10,6 +10,18 @@ import img03 from '../assets/heroBanner/herobanner03.webp';
 import img03s from '../assets/heroBanner/herobanner03s.webp';
 import img03m from '../assets/heroBanner/herobanner03m.webp';
 import img03l from '../assets/heroBanner/herobanner03l.webp';
+import placeholderImg01 from '../assets/placeholder/heroBanner/herobanner01.webp';
+import placeholderImg01s from '../assets/placeholder/heroBanner/herobanner01s.webp';
+import placeholderImg01m from '../assets/placeholder/heroBanner/herobanner01m.webp';
+import placeholderImg01l from '../assets/placeholder/heroBanner/herobanner01l.webp';
+import placeholderImg02 from '../assets/placeholder/heroBanner/herobanner02.webp';
+import placeholderImg02s from '../assets/placeholder/heroBanner/herobanner02s.webp';
+import placeholderImg02m from '../assets/placeholder/heroBanner/herobanner02m.webp';
+import placeholderImg02l from '../assets/placeholder/heroBanner/herobanner02l.webp';
+import placeholderImg03 from '../assets/placeholder/heroBanner/herobanner03.webp';
+import placeholderImg03s from '../assets/placeholder/heroBanner/herobanner03s.webp';
+import placeholderImg03m from '../assets/placeholder/heroBanner/herobanner03m.webp';
+import placeholderImg03l from '../assets/placeholder/heroBanner/herobanner03l.webp';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import arrowRight from '../assets/regular-icons/chevron-right.svg';
@@ -22,7 +34,7 @@ import '../styles/HeroBanner.css';
 const HeroBanner = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel(
         { loop: true, duration: 40 },
-        [Autoplay({ delay: 5000, stopOnInteraction: false })]
+        [Autoplay({ delay: 5000000, stopOnInteraction: false })]
     );
 
     // Save the actual banner-index
@@ -51,6 +63,10 @@ const HeroBanner = () => {
         if (emblaApi) emblaApi.scrollPrev();
     };
 
+    const [loadedHero01, setLoadedHero01] = useState<boolean>(false);
+    const [loadedHero02, setLoadedHero02] = useState<boolean>(false);
+    const [loadedHero03, setLoadedHero03] = useState<boolean>(false);
+
     return (
         <section className="embla hero" ref={emblaRef}>
             <div className="embla__container hero">
@@ -60,9 +76,23 @@ const HeroBanner = () => {
                             src={img01}
                             srcSet={`${img01s} 600w, ${img01m} 1000w, ${img01l} 1500w, ${img01} 1900w`}
                             alt=""
-                            className="carouselImg"
+                            className={`carouselImg carouselImg01 ${
+                                loadedHero01 ? 'loaded' : ''
+                            }`}
                             onClick={handleNext}
-                            onMouseDown={e => e.preventDefault()}
+                            onMouseDown={(e) => e.preventDefault()}
+                            width={'100%'}
+                            height={'100%'}
+                            onLoad={() => setLoadedHero01(true)}
+                        />
+
+                        <img
+                            src={placeholderImg01}
+                            srcSet={`${placeholderImg01s} 600w, ${placeholderImg01m} 1000w, ${placeholderImg01l} 1500w, ${placeholderImg01} 1900w`}
+                            alt=""
+                            className="carouselImgPlaceholder"
+                            onClick={handleNext}
+                            onMouseDown={(e) => e.preventDefault()}
                             width={'100%'}
                             height={'100%'}
                         />
@@ -98,9 +128,24 @@ const HeroBanner = () => {
                             src={img02}
                             srcSet={`${img02s} 600w, ${img02m} 1000w, ${img02l} 1500w, ${img02} 1900w`}
                             alt=""
-                            className="carouselImg"
+                            loading="lazy"
+                            className={`carouselImg carouselImg02 ${
+                                loadedHero02 ? 'loaded' : ''
+                            }`}
                             onClick={handleNext}
-                            onMouseDown={e => e.preventDefault()}
+                            onMouseDown={(e) => e.preventDefault()}
+                            width={'100%'}
+                            height={'100%'}
+                            onLoad={() => setLoadedHero02(true)}
+                        />
+
+                        <img
+                            src={placeholderImg02}
+                            srcSet={`${placeholderImg02s} 600w, ${placeholderImg02m} 1000w, ${placeholderImg02l} 1500w, ${placeholderImg02} 1900w`}
+                            alt=""
+                            className="carouselImgPlaceholder"
+                            onClick={handleNext}
+                            onMouseDown={(e) => e.preventDefault()}
                             width={'100%'}
                             height={'100%'}
                         />
@@ -135,9 +180,24 @@ const HeroBanner = () => {
                             src={img03}
                             srcSet={`${img03s} 600w, ${img03m} 1000w, ${img03l} 1500w, ${img03} 1900w`}
                             alt=""
-                            className="carouselImg"
+                            className={`carouselImg carouselImg03 ${
+                                loadedHero03 ? 'loaded' : ''
+                            }`}
                             onClick={handleNext}
-                            onMouseDown={e => e.preventDefault()}
+                            loading="lazy"
+                            onMouseDown={(e) => e.preventDefault()}
+                            width={'100%'}
+                            height={'100%'}
+                            onLoad={() => setLoadedHero03(true)}
+                        />
+
+                        <img
+                            src={placeholderImg03}
+                            srcSet={`${placeholderImg03s} 600w, ${placeholderImg03m} 1000w, ${placeholderImg03l} 1500w, ${placeholderImg03} 1900w`}
+                            alt=""
+                            className="carouselImgPlaceholder"
+                            onClick={handleNext}
+                            onMouseDown={(e) => e.preventDefault()}
                             width={'100%'}
                             height={'100%'}
                         />
@@ -170,7 +230,7 @@ const HeroBanner = () => {
 
             <button
                 onClick={handlePrev}
-                onMouseDown={e => e.preventDefault()}
+                onMouseDown={(e) => e.preventDefault()}
                 className="carouselBtn hero prevBtn"
                 aria-label="Nächstes Banner"
             >
@@ -179,7 +239,7 @@ const HeroBanner = () => {
 
             <button
                 onClick={handleNext}
-                onMouseDown={e => e.preventDefault()}
+                onMouseDown={(e) => e.preventDefault()}
                 className="carouselBtn hero nextBtn"
                 aria-label="Vorheriges Banner"
             >

@@ -20,13 +20,39 @@
 
 .banner {
     min-height: 60vh;
+    position: relative;
 }
 
 .carouselImg {
+    opacity: 0;
     height: 60vh;
     width: 100%;
     object-fit: cover;
     object-position: bottom;
+}
+
+.carouselImg.loaded {
+    animation: opacity 0.3s ease forwards;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.carouselImgPlaceholder {
+    position: absolute;
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    object-position: bottom;
+    left: 0;
+    filter: blur(5px);
+    z-index: -1;
 }
 
 .bannerContentContainer {
@@ -192,6 +218,7 @@
     }
     .embla__slide.hero,
     .carouselImg,
+    .carouselImgPlaceholder,
     .banner {
         /* 100svh screen-height - nav-height + top: 25px from Container - header-height */
         min-height: calc(100svh - 55px + 25px - clamp(85px, 26vw, 120px));
@@ -224,7 +251,7 @@
         bottom: 15px;
     }
     .embla__slide.hero,
-    .carouselImg {
+    .carouselImg, .carouselImgPlaceholder {
         /* 100svh screen-height - nav-height + top: 25px from Container - header-height */
         max-height: calc(100svh - 55px + 25px - clamp(85px, 26vw, 120px));
     }
