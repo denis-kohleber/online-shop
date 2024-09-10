@@ -155,6 +155,7 @@ const SearchMenu = ({ isSearchActive, removeMenus }: Props) => {
                         return (
                             <Link
                                 to={`/categories/${item.category}/${item.id}`}
+                                onClick={() => removeMenus()}
                                 className="searchResultLink btn"
                                 key={item.title + item.imageFront}
                                 tabIndex={isSearchActive ? 0 : -1}
