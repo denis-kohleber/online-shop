@@ -5,9 +5,8 @@ import { Footer } from '../components/Footer';
 import { CartProvider } from '../contexts/CartContext';
 import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { motion } from 'framer-motion';
+import Home from '../pages/Home';
 
-const Home = lazy(() => import('../pages/Home'));
 const CategoriesPage = lazy(() => import('../pages/CategoriesPage'));
 const ProductPage = lazy(() => import('../pages/ProductPage'));
 const NotFound = lazy(() => import('../pages/NotFound'));
@@ -23,13 +22,7 @@ function App() {
             <Header ref={ref} />
             <Navbar inView={inView} />
 
-            <motion.main
-                key={'nkjsafealf'}
-                className="fallback"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: [0.4, 0, 0.4, 1] }}
+            <main
             >
                 <Suspense fallback={<div className="fallback"></div>}>
                     <Routes>
@@ -45,7 +38,7 @@ function App() {
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Suspense>
-            </motion.main>
+            </main>
 
             <Footer />
         </CartProvider>
