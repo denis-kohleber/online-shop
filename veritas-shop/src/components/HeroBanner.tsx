@@ -34,7 +34,7 @@ import '../styles/HeroBanner.css';
 const HeroBanner = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel(
         { loop: true, duration: 40 },
-        [Autoplay({ delay: 5000000, stopOnInteraction: false })]
+        [Autoplay({ delay: 5000, stopOnInteraction: false })]
     );
 
     // Save the actual banner-index
