@@ -21,6 +21,10 @@ export default function Home() {
 
     // Load lazy components, when they are in view.
     useEffect(() => {
+        const currentCategoriesRef = categoriesRef.current; 
+        const currentHighlightsRef = highlightsRef.current; 
+        const currentAboutUsRef = aboutUsRef.current; 
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -45,29 +49,29 @@ export default function Home() {
             }
         );
 
-        if (categoriesRef.current) {
-            observer.observe(categoriesRef.current);
+        if (currentCategoriesRef) {
+            observer.observe(currentCategoriesRef);
         }
 
-        if (highlightsRef.current) {
-            observer.observe(highlightsRef.current);
+        if (currentHighlightsRef) {
+            observer.observe(currentHighlightsRef);
         }
 
-        if (aboutUsRef.current) {
-            observer.observe(aboutUsRef.current);
+        if (currentAboutUsRef) {
+            observer.observe(currentAboutUsRef);
         }
 
         return () => {
-            if (categoriesRef.current) {
-                observer.unobserve(categoriesRef.current);
+            if (currentCategoriesRef) {
+                observer.unobserve(currentCategoriesRef);
             }
 
-            if (highlightsRef.current) {
-                observer.unobserve(highlightsRef.current);
+            if (currentHighlightsRef) {
+                observer.unobserve(currentHighlightsRef);
             }
 
-            if (aboutUsRef.current) {
-                observer.unobserve(aboutUsRef.current);
+            if (currentAboutUsRef) {
+                observer.unobserve(currentAboutUsRef);
             }
         };
     }, []);

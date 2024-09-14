@@ -26,6 +26,8 @@ function App() {
 
     // Load lazy components, when they are in view.
     useEffect(() => {
+        const currentFooterRef = footerRef.current; 
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -42,13 +44,13 @@ function App() {
             }
         );
 
-        if (footerRef.current) {
-            observer.observe(footerRef.current);
+        if (currentFooterRef) {
+            observer.observe(currentFooterRef);
         }
 
         return () => {
-            if (footerRef.current) {
-                observer.unobserve(footerRef.current);
+            if (currentFooterRef) {
+                observer.unobserve(currentFooterRef);
             }
         };
     }, []);
