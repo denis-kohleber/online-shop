@@ -9,7 +9,7 @@ import { FadeInAnimation } from './FadeInAnimation';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-const Highlights = () => {
+export default function Highlights () {
     // Shoe Data
     const highlightedShoes = shoeData.filter((item) => item.highlight);
     const mixedHighlightedShoes = shuffleObject(highlightedShoes);
@@ -153,5 +153,3 @@ const Highlights = () => {
         </section>
     );
 };
-
-export { Highlights };

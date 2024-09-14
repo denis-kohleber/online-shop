@@ -16,7 +16,7 @@ import {
 import { useRef, useEffect } from 'react';
 import { FadeInAnimation } from './FadeInAnimation';
 
-const Categories = () => {
+export default function Categories() {
     // Arrays for the refs, controls(startingOrder) & the inView-Check
     const figures = [useRef(null), useRef(null), useRef(null)];
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -150,5 +150,3 @@ const Categories = () => {
         </section>
     );
 };
-
-export { Categories };

@@ -11,7 +11,7 @@ import { FancyImg } from "./FancyImg";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const AboutUs = () => {
+export default function AboutUs() {
     const div = useRef<HTMLDivElement>(null);
     const isInView = useInView(div, {
         once: true,
@@ -94,5 +94,3 @@ const AboutUs = () => {
         </section>
     );
 };
-
-export { AboutUs };

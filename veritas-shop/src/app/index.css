@@ -280,6 +280,7 @@ body {
 
 main {
     max-width: 100%;
+    min-height: 100vh;
     position: relative;
 }
 
@@ -337,3 +338,8 @@ main {
 .fallback {
     min-height: 200vh;
 }
+
+.fallbackComponent {
+    min-height: min(400px, 50vh);
+}
+

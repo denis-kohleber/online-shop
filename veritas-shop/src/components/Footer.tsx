@@ -8,7 +8,7 @@ import packageIcon from '../assets/benefits-icons/package.svg';
 import githubIcon from '../assets/regular-icons/github.svg';
 import '../styles/Footer.css';
 
-function Footer() {
+export default function Footer() {
     // Dropdown by < 700 screen-width
     const infoList01Ref = useRef<HTMLUListElement>(null);
     const infoList02Ref = useRef<HTMLUListElement>(null);
@@ -320,5 +320,3 @@ function Footer() {
         </footer>
     );
 }
-
-export { Footer };
