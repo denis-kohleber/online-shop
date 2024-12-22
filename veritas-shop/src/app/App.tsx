@@ -85,6 +85,7 @@ function App() {
                     <Suspense
                         fallback={<div className="fallbackComponent"></div>}
                     >
+                    
                         <Footer />
                     </Suspense>
                 )}
