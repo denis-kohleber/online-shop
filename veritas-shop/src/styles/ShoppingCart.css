@@ -8,7 +8,7 @@
     flex-flow: column;
     position: absolute;
     align-items: start;
-    height: calc(100vh - 54px);
+    height: calc(100svh - 54px);
     top: 0;
     right: 0;
     padding-top: 55px;

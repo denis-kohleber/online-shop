@@ -155,7 +155,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     background-color: #00000030;
     z-index: 1;
     opacity: 1;
@@ -263,7 +263,7 @@
         flex-flow: column;
         position: absolute;
         align-items: start;
-        height: calc(100vh - 15px);
+        height: calc(100svh - 15px);
         top: 0;
         left: 0;
         padding-top: 70px;
